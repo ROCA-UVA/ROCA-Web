@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="ISO-8859-1">
+	<title>ROCA Observation Tool</title>
+	<link rel="stylesheet" href="obs.css">
+	<link rel="stylesheet" href="popupCSS.css">
+	<style>
+		#classroom_mapping {
+			background-image: url("room/images/THN-E303.jpg");
+		}
+
+		button {
+			border: 1px solid black;
+		}
+
+		button.highlight {
+			border: 1px solid blue;
+		}
+	</style>
+	<link rel="stylesheet" href="themify-icons.css">
+	<link rel="stylesheet" href="fonts/stylesheet.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="obs.js"></script>
+
+	<script>
+
+
+		function createBoxes() {
+			shadeGrid(0, 0, 14, 6, 1);
+			shadeGrid(14, 0, 27, 6, 2);
+			shadeGrid(5, 6, 14, 7, 3);
+			shadeGrid(14, 6, 23, 7, 4);
+			shadeGrid(8, 7, 14, 8, 5);
+			shadeGrid(14, 7, 19, 8, 6);
+		}
+
+		function myFunction() {
+			document.getElementById("myForm").submit();
+		}
+
+		function colorchange(id) {
+			var background = document.getElementById(id).style.backgroundColor;
+			if (background == "rgb(255, 145, 0)") {
+				document.getElementById(id).style.backgroundColor = "rgb(26,255,0)";
+			} else if (background == "rgb(26, 255, 0)") {
+				document.getElementById(id).style.backgroundColor = "rgb(255,145,0)";
+			}
+		}
+
+		$('#button').change(function () {
+			var jElement = $(this);
+			jElement.addClass('highlight');
+			setTimeout(
+				function () { jElement.removeClass('highlight'); },
+				2000
+			);
+		});
+	</script>
+</head>
+
+
+<body onload="setAllDefaultValues()">
+	<!-- Data from forms set to invisible iframe: WILL NEED TO CHANGE THIS LATER -->
+	<iframe name="dump_data_frame" id="dump_data_frame"></iframe>
+
+	<div class="body_content">
+		<!-- BEGIN: left_side div -->
+		<!-- Contains classroom pic and majority of inputs -->
+		<div id="left_side">
+			<!-- BEGIN: top_left div -->
+			<!-- Contains back button and room name -->
+			<!-- <form autocomplete="off" id="student_events_form" target="dump_data_frame"></form> -->
+			<div id="top_left">
+				<div><a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow"
+							class="ti-arrow-left"></span></a>&nbsp;&nbsp;&nbsp;Thornton Hall E-Wing 303</div>
+
+				<!-- NEEDS: Pull From Database -->
+				<div class="class_section_input" id="s1">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 1</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,1)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel1" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,1)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="class_section_input" id="s2">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 2</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,2)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel2" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,2)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="class_section_input" id="s3">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 3</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,3)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel3" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,3)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="class_section_input" id="s4">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 4</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,4)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel4" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,4)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="class_section_input" id="s5">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 5</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,5)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel5" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,5)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+				<div class="class_section_input" id="s6">
+					<table style="width:auto; height:auto;">
+						<caption style="font-size: 40%; padding-top: 2%">Area 6</caption>
+						<tr>
+							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
+							</td>
+							<td><button class="circularButton2" title="Increment Students" type="button"
+									id="more_students" onclick="updateStudentNum(this,6)"
+									style="font-weight: bold; font-size: 70%;">+</button></td>
+							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
+								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
+								<button class="button2 event WC style=" width:100%">Responds to Student</button>
+								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
+							</td>
+						</tr>
+						<tr>
+							<td id="numStudentLabel6" style="font-size: small;">0</td>
+						</tr>
+						<tr>
+							<td><button class="circularButton2" title="Decrement Students" type="button"
+									id="less_students" onclick="updateStudentNum(this,6)"
+									style="font-weight: bold; font-size: 70%;">-</button></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- BEGIN: classroom mapping -->
+			<div id="classroom_mapping">
+
+			</div>
+
+			<div id="bottom_left">
+
+				<!--<button class="pulse-button" title="Start" type="button" onclick="start_or_stop()" id="start_button"><span class="ti-control-play" style="vertical-align: -2px"></span></button>-->
+				<div class="pen-wrapper" style="display: inline-block">
+
+					<div class="buton-cover button-slide-out">
+						<span class="button-slide-out__above" style="text-align: center;" id="areYouSure">are you
+							sure?</span>
+
+						<div class="button-slide-out__middle">
+							<button class="btn2" id="start_button" onclick="start_or_stop()"
+								style="-webkit-animation: pulse 1.8s infinite;" title="Start"><span
+									class="ti-control-play" style="vertical-align: -2px"></span></button>
+						</div>
+
+						<div class="button-slide-out__below">
+							<button class="btn2" id="cancelStop" onclick="full_stop()"
+								style="display:none">cancel</button>
+						</div>
+
+					</div>
+				</div>
+				<!---->
+
+				<div class="pen-wrapper" style="display: inline-block">
+
+					<div class="buton-cover button-slide-out">
+						<span class="button-slide-out__above" style="text-align: center">are you sure?</span>
+
+						<div class="button-slide-out__middle">
+							<button class="btn" id="initiallyReset" onclick="resetButtonMixup()"
+								onmouseover="rotateIcon()" onmouseout="rotateIcon()">
+								<div id="icon"><span class="ti-reload" style="vertical-align: -2px"></span></div>
+							</button>
+						</div>
+
+						<div class="button-slide-out__below">
+							<button class="btn" id="initiallyCancel" onclick="reload()">cancel</button>
+						</div>
+
+					</div>
+				</div>
+				<div class="dropdown" onmouseover="reactivateDropdowns()">
+					<button class="button">instructor activities</button>
+					<div class="dropdown-content">
+						<a href="index.php?action=L">Lecturing</a>
+						<a href="index.php?action=GD">Group Discussion</a>
+						<a href="index.php?action=AT">Administrative Task</a>
+						<a href="index.php?action=MM">Media</a>
+						<a href="index.php?action=ID">Idle</a>
+					</div>
+				</div>
+				<div class="dropdown" onmouseover="reactivateDropdowns()">
+					<button class="button">student activities</button>
+					<div class="dropdown-content">
+						<a href="index.php?action=SGW">Group Work</a>
+						<a href="index.php?action=DW">Invidual Work</a>
+						<a href="index.php?action=SP">Presentation</a>
+					</div>
+				</div>
+
+				<button class="circularButton" title="Feed" type="button" id="feed_button"
+					onclick="openFeed(event)"><span class="ti-list-ol" style="vertical-align: -2px"></span></button>
+				<div id="commentPopup" class="commentPopupStyle"></div>
+				<button class="circularButton" title="Comment" type="button" id="comment_button"
+					onclick="showCommentPopup(event)"><span class="ti-pencil" style="vertical-align: -2px"
+						onclick="showCommentPopup(event)"></span></button>
+				<br /><br />
+
+				<div style="text-align:center;">
+					<div id="persistingFeed" style="display: inline-block;"></div><br /><br />
+					<div class="fadingFeed" style="display: inline-block;"></div>
+				</div>
+
+				<div id="feed" class="modal" style="text-align: left">
+					<!-- Modal content -->
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close"></span>
+							Feedback
+						</div>
+
+						<div class="modal-body"></div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END: left_side div -->
+
+		<!-- BEGIN: right_side div -->
+		<!-- Contains interval reading form -->
+		<div id="right_side">
+			<div id="interval_readings_form">
+				<div id="Pedagogical_Strategies">
+					<div id="timer" style="text-align: center;"></div>
+					<div class="subheader">What is the instructor doing?</div>
+					<div class="checkbox-grid">
+					</div>
+				</div>
+				<div id="Instructional Technologies">
+					<div class="subheader">What technologies are being used?</div>
+					<div class="checkbox-grid">
+					</div>
+				</div>
+				<div id="Student Engagement">
+					<div class="subheader">What are the students doing?</div>
+					<div class="checkbox-grid">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END: right_side div -->
+	</div>
+
+	<form id="finalSubmit" style="display:none" action="index.php" method="post">
+		<input type="hidden" name="fullData" id="fullData" value="">
+	</form>
+
+</body>
+<script>
+	; (function ($) {
+		function clickHandler() {
+			$(this).parents('.buton-cover').toggleClass('is_active');
+		}
+		$('.btn').on('click', clickHandler);
+	}(jQuery));</script>
+</html>

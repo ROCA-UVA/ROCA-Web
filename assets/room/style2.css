@@ -1,0 +1,147 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*{
+   font-family: 'product sans';
+   margin: 0;
+   background-color: #f2f2f2;
+}
+body{
+  padding: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+h1{
+  padding-bottom: 0;
+}
+h2{
+  padding-top: 2%;
+}
+h3{
+  padding-bottom: 3%;
+  padding-top: 2%;
+}
+.description{
+  font-size: 100%;
+  background-color: transparent;
+  color: black;
+}
+p{
+  font-size: 50%;
+  padding-bottom: 2%;
+  background-color: #000000;
+  color: #ffffff
+}
+input[type=text] {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #000000 ;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color:#9B9B9B;
+    background-color: #ffffff;
+}
+input[type=submit], .button {
+      width: 70%;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: 2px solid #ffffff ;
+      border-radius: 20px;
+      box-sizing: border-box;
+      border-radius: 20px;
+      background-color: #000000;
+      color: #ffffff;
+      cursor: pointer;
+  }
+  input[type=submit]:hover, .button:hover {
+    width: 70%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    color:#000000;
+    background-color: #ffffff;
+  }
+ /* .button {
+	width: 70%;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: 2px solid #ffffff ;
+      border-radius: 20px;
+      box-sizing: border-box;
+      border-radius: 20px;
+      background-color: #000000;
+      color: #ffffff;
+      cursor: pointer;
+	
+}*/
+  #finalSubmit{
+    margin-left: 15%;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 2%;
+  }
+  .grid-item {
+    border: 2px solid #ccc;
+    border-radius: 6%;
+    background-color: black;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+  .wrapper{
+  position:relative;
+  }
+  .absolute_pic{
+    position: absolute;
+  }
+ #grid_img {
+ 	background-color: transparent;
+ 	height: 100%;
+ 	width: 100%;
+ }
+ #grid_div {
+ 	display: grid;
+ 	height: 400px;
+ 	width: 1200px;
+ 	grid-template-rows: repeat(10, 10%);
+ 	grid-template-columns: repeat(30, 1fr);
+ 	/*z-index: 3;*/
+ 	position: absolute;
+ 	background-image: url("https://produced.seas.virginia.edu/dots/roca_r/MEC-341.jpg");
+	background-size: 100% 100%;
+ }
+ 
+ .grid_boxes {
+ 	display: block;
+ 	outline: solid;
+ 	outline-width: thin;
+ 	outline-color: white;
+ 	color: white;
+ 	text-align: right;
+ 	background-color: transparent;
+ }
+ 
+ #dump_data_frame {
+	display: none;
+}
+ 
+ 
+ .box {
+  /*height:10.5%;*/
+  /* OK */
+  /*width: 3.4%;*/
+  max-height: 100%;
+  /*z-index:4;*/
+  /* OK */
+  /*margin-left: 4.7%;*/
+  /*margin-top: 1.2%;*/
+  /* /margin: 16.3% 0 0 31.9%; */
+  position: absolute;
+  border: 2px solid #000000 ;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: rgba(98,86, 80, 0.3)	/* 50% opaque blue */
+;
+ }

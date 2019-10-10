@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2019 at 04:15 AM
+-- Generation Time: Oct 10, 2019 at 06:13 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,187 +25,209 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructor-actions`
+-- Table structure for table `activity_categories`
 --
 
-CREATE TABLE `instructor-actions` (
+CREATE TABLE `activity_categories` (
   `ID` int(11) NOT NULL,
-  `Action` varchar(100) NOT NULL COMMENT 'what the instructor is doing'
+  `activity` varchar(50) DEFAULT NULL,
+  `activityCode` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instructor-actions`
+-- Dumping data for table `activity_categories`
 --
 
-INSERT INTO `instructor-actions` (`ID`, `Action`) VALUES
-(1, 'Problems'),
-(2, 'Writing'),
-(3, 'Pre-Made Materials'),
-(4, 'Live Action'),
-(5, 'Class Feedback'),
-(6, 'Monitoring'),
-(7, 'Moving in Groups'),
-(8, 'Poses Question'),
-(9, 'Rhetorical Question'),
-(10, 'Comprehensive Question'),
-(11, 'Answers Question'),
-(12, 'Individual Follow-up'),
-(13, 'Uses Humor'),
-(14, 'Uses Emphasis');
+INSERT INTO `activity_categories` (`ID`, `activity`, `activityCode`) VALUES
+(1, 'Lecturing', 'Lec'),
+(2, 'Group Discussion', 'Grp Disc'),
+(3, 'Administrative Task', 'Admin'),
+(4, 'Media', 'Med'),
+(5, 'Idle', 'Idle'),
+(6, 'Group Work', 'Grp wk'),
+(7, 'Individual Work', 'Ind wk'),
+(8, 'Presentation', 'Pres');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructor-activity-categories`
+-- Table structure for table `instructor_event_dependencies`
 --
 
-CREATE TABLE `instructor-activity-categories` (
-  `id` int(11) NOT NULL,
-  `category` varchar(100) NOT NULL
+CREATE TABLE `instructor_event_dependencies` (
+  `ID` int(11) NOT NULL,
+  `categoryID` int(11) NOT NULL,
+  `event` varchar(50) NOT NULL,
+  `eventCode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `instructor-activity-categories`
+-- Dumping data for table `instructor_event_dependencies`
 --
 
-INSERT INTO `instructor-activity-categories` (`id`, `category`) VALUES
-(1, 'Lecture'),
-(2, 'Group Discussion'),
-(3, 'Administrative Task'),
-(4, 'Media'),
-(5, 'Idle');
+INSERT INTO `instructor_event_dependencies` (`ID`, `categoryID`, `event`, `eventCode`) VALUES
+(1, 1, 'Problems', 'Prob'),
+(2, 1, 'Writing', 'Write'),
+(3, 1, 'Pre-made Materials', 'Pre-made'),
+(4, 1, 'Live Action', 'Live'),
+(5, 1, 'Class Feedback', 'Feedbk'),
+(6, 2, 'Problems', 'Prob'),
+(7, 2, 'Writing', 'Write'),
+(8, 2, 'Pre-made Materials', 'Pre-made'),
+(9, 2, 'Live Action', 'Live'),
+(10, 2, 'Class Feedback', 'Feedbk'),
+(11, 2, 'Monitoring', 'Monit'),
+(12, 2, 'Moving In Groups', 'Move in Grp'),
+(15, 3, 'Problems', 'Prob'),
+(16, 3, 'Writing', 'Write'),
+(17, 3, 'Pre-made Materials', 'Pre-made'),
+(18, 4, 'Pre-made Materials', 'Pre-made'),
+(19, 4, 'Monitoring', 'Monit');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student-actions`
+-- Table structure for table `instructor_inst_event_dependencies`
 --
 
-CREATE TABLE `student-actions` (
-  `id` int(11) NOT NULL,
-  `student-response` varchar(75) NOT NULL
+CREATE TABLE `instructor_inst_event_dependencies` (
+  `ID` int(11) NOT NULL,
+  `cateogoryID` int(11) NOT NULL,
+  `instEvent` varchar(50) NOT NULL,
+  `instEventCode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `student-actions`
+-- Dumping data for table `instructor_inst_event_dependencies`
 --
 
-INSERT INTO `student-actions` (`id`, `student-response`) VALUES
-(1, 'Structured Work'),
-(2, 'Informal Discussion'),
-(3, 'Live Action'),
-(4, 'Taking Notes'),
-(5, 'Distracted');
+INSERT INTO `instructor_inst_event_dependencies` (`ID`, `cateogoryID`, `instEvent`, `instEventCode`) VALUES
+(1, 1, 'Poses Question', 'Poses Q'),
+(2, 1, 'Comprehension Question', 'Comp Q'),
+(3, 1, 'Rhetorical Question', 'Rhetoric Q'),
+(4, 1, 'Answers Question', 'Answers Q'),
+(5, 1, 'Individual Feedback', 'Ind Feedback'),
+(6, 1, 'Uses Humor', 'Humor'),
+(7, 1, 'Uses Emphasis', 'Emphasis'),
+(8, 2, 'Poses Question', 'Poses Q'),
+(9, 2, 'Comprehension Question', 'Comp Q'),
+(10, 2, 'Rhetorical Question', 'Rhetoric Q'),
+(11, 2, 'Answers Question', 'Answers Q'),
+(12, 2, 'Individual Feedback', 'Ind Feedback'),
+(13, 2, 'Uses Humor', 'Humor'),
+(14, 2, 'Uses Emphasis', 'Emphasis'),
+(15, 3, 'Poses Question', 'Poses Q'),
+(16, 3, 'Comprehension Question', 'Comp Q'),
+(17, 3, 'Answers Question', 'Answers Q'),
+(18, 3, 'Individual Feedback', 'Ind Feedback'),
+(19, 3, 'Uses Humor', 'Humor'),
+(20, 3, 'Uses Emphasis', 'Emphasis');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student-activity-categories`
+-- Table structure for table `tech_dependencies`
 --
 
-CREATE TABLE `student-activity-categories` (
-  `id` int(11) NOT NULL,
-  `category` varchar(100) NOT NULL
+CREATE TABLE `tech_dependencies` (
+  `ID` int(11) NOT NULL,
+  `categoryID` int(11) NOT NULL,
+  `tech` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `student-activity-categories`
+-- Dumping data for table `tech_dependencies`
 --
 
-INSERT INTO `student-activity-categories` (`id`, `category`) VALUES
-(1, 'Group Work'),
-(2, 'Independent Work'),
-(3, 'Presentation');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `technologies`
---
-
-CREATE TABLE `technologies` (
-  `id` int(11) NOT NULL,
-  `technology` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `technologies`
---
-
-INSERT INTO `technologies` (`id`, `technology`) VALUES
-(1, 'Non-digital'),
-(2, 'Digital'),
-(3, 'Projection'),
-(4, 'Response System'),
-(5, 'Website');
+INSERT INTO `tech_dependencies` (`ID`, `categoryID`, `tech`) VALUES
+(1, 1, 'Non-digital'),
+(2, 1, 'Digital'),
+(3, 1, 'Projection'),
+(4, 1, 'Response System'),
+(5, 1, 'Website'),
+(6, 2, 'Non-digital'),
+(7, 2, 'Digital'),
+(8, 2, 'Projection'),
+(9, 2, 'Response System'),
+(10, 2, 'Website'),
+(11, 3, 'Non-digital'),
+(12, 3, 'Digital'),
+(13, 3, 'Projection'),
+(14, 3, 'Website'),
+(15, 4, 'Digital'),
+(16, 4, 'Projection'),
+(17, 4, 'Website'),
+(18, 6, 'Non-digital'),
+(19, 6, 'Digital'),
+(20, 6, 'Projection'),
+(21, 6, 'Response System'),
+(22, 6, 'Website'),
+(23, 7, 'Non-digital'),
+(24, 7, 'Digital'),
+(25, 7, 'Projection'),
+(26, 7, 'Response System'),
+(27, 7, 'Website'),
+(28, 8, 'Non-digital'),
+(29, 8, 'Digital'),
+(30, 8, 'Projection'),
+(31, 8, 'Response System'),
+(32, 8, 'Website');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `instructor-actions`
+-- Indexes for table `activity_categories`
 --
-ALTER TABLE `instructor-actions`
+ALTER TABLE `activity_categories`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `instructor-activity-categories`
+-- Indexes for table `instructor_event_dependencies`
 --
-ALTER TABLE `instructor-activity-categories`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `instructor_event_dependencies`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `student-actions`
+-- Indexes for table `instructor_inst_event_dependencies`
 --
-ALTER TABLE `student-actions`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `instructor_inst_event_dependencies`
+  ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `student-activity-categories`
+-- Indexes for table `tech_dependencies`
 --
-ALTER TABLE `student-activity-categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `technologies`
---
-ALTER TABLE `technologies`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `tech_dependencies`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `instructor-actions`
+-- AUTO_INCREMENT for table `activity_categories`
 --
-ALTER TABLE `instructor-actions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `activity_categories`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `instructor-activity-categories`
+-- AUTO_INCREMENT for table `instructor_event_dependencies`
 --
-ALTER TABLE `instructor-activity-categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `instructor_event_dependencies`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `student-actions`
+-- AUTO_INCREMENT for table `instructor_inst_event_dependencies`
 --
-ALTER TABLE `student-actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `instructor_inst_event_dependencies`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `student-activity-categories`
+-- AUTO_INCREMENT for table `tech_dependencies`
 --
-ALTER TABLE `student-activity-categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `technologies`
---
-ALTER TABLE `technologies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `tech_dependencies`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

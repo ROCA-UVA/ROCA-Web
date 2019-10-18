@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2019 at 11:04 PM
+-- Generation Time: Oct 18, 2019 at 04:44 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -241,7 +241,8 @@ INSERT INTO `dependencies` (`ID`, `aID`, `eID`) VALUES
 (153, 8, 9),
 (154, 8, 10),
 (155, 8, 11),
-(156, 8, 12);
+(156, 8, 12),
+(157, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -370,7 +371,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `dependencies`
 --
 ALTER TABLE `dependencies`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `events_code_bank`

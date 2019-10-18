@@ -17,7 +17,9 @@ function initConfig() {
 	}
 
 	// Update title of live observation page
-	document.getElementById("classroom").innerHTML = building + " " + room_number;
+	if (building != undefined && room_number != undefined) {
+		document.getElementById("classroom_name").innerHTML = building + " " + room_number;
+	}
 }
 
 function reload() {
@@ -29,26 +31,21 @@ function start() {
 	active = true;
 
 	// Enable event buttons
-	var inputs = document.getElementByTagName("INPUT");
+	var inputs = document.getElementsByTagName("INPUT");
 	for (var i = 0; i < inputs.length; i++) {
 		inputs[i].disabled = false;
 	}
 
 	// Change start button to stop button
 	var start_button = document.getElementById("start_button");
-	if (start_button.className == "pulse-button") {
-		start_button.className = "circularButton";
-		start_button.innerHTML = "<span class='ti-control-stop' style='vertical-align: -2px'></span>";
-		start_button.style.backgroundColor = "red";
-	}
+	start_button.innerHTML = "<span class='ti-control-stop' style='vertical-align: -2px'></span>";
+	start_button.style.backgroundColor = "red";
+	start_button.setAttribute("onclick", "confirmAction('cancelStop', 'start_button')");
 }
 
 // Stop recording
 function stop() {
 	active = false;
-
-	// Display cancel button
-	resetCancel();
 
 	// Submit observation log to a form
 	var log = document.getElementById("fullData");
@@ -56,22 +53,22 @@ function stop() {
 	document.getElementById("finalSubmit").submit();
 }
 
-// Display cancel button and reset button
-function resetCancel() {
-	var cancel_button = document.getElementById("initiallyReset");
-	var reset_button = document.getElementById("initiallyCancel");
+// Display cancel button and action button
+function confirmAction(cancel, action) {
+	var cancel_button = document.getElementById(cancel);
+	var action_button = document.getElementById(action);
 
 	if (cancel_button.innerHTML != "cancel") {
 		new_cancel = cancel_button;
-		new_reset = reset_button;
+		new_reset = action_button;
 	} else {
-		new_cancel = reset_button;
+		new_cancel = action_button;
 		new_reset = cancel_button;
 	}
 
-	new_reset.style.backgroundColor = "#232323";
-	new_reset.style.color = "#fff";
-	new_reset.innerHTML = "<span class='ti-reload' style='vertical-align:-2px'></span>";
+	new_reset.style.backgroundColor = new_cancel.style.backgroundColor;
+	new_reset.style.color = new_cancel.style.color;
+	new_reset.innerHTML = new_cancel.innerHTML;
 
 	new_cancel.style.backgroundColor = "#f1f1f1";
 	new_cancel.style.color = "#000";
@@ -81,10 +78,4 @@ function resetCancel() {
 function updateScroll() {
 	var element = document.getElementByClassName("modal-body");
 	element[0].scrollTop = element[0].scrollHeight;
-}
-
-function openFeed(event) {
-	var modal = document.getElementById("feed");
-	modal.style.display = "block";
-	event.stopPropagation();
 }

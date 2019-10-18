@@ -8,35 +8,14 @@
 	<link rel="stylesheet" href="assets/stylesheet.css">
 	<link rel="stylesheet" href="assets/themify-icons.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript">
-	function GetURLParameter(sParam)
-	{
-   		var sPageURL = window.location.search.substring(1);
-    	var sURLVariables = sPageURL.split('&');
-    	for (var i = 0; i < sURLVariables.length; i++) 
-    	{
-        	var sParameterName = sURLVariables[i].split('=');
-        	if (sParameterName[0] == sParam) 
-        	{
-            	return sParameterName[1];
-        	}
-    	}
-	}
-	var building=(GetURLParameter('building'));
-	var roomNumber=(GetURLParameter('roomNumber'));
-	$(document).ready(function(){
-		if(building !== undefined && building !== null && roomNumber !== undefined && roomNumber !== null){
-			document.getElementById("classroomName").innerHTML = building +" "+ roomNumber;
-		}
-	})
-	
-	</script>
-
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" href="stylesheet.css">
+	<link rel="stylesheet" href="themify-icons.css">
 
 </head>
 
 
-<body onload="setAllDefaultValues()">
+<body onload="initConfig()">
 	<!-- Data from forms set to invisible iframe: WILL NEED TO CHANGE THIS LATER -->
 	<iframe name="dump_data_frame" id="dump_data_frame"></iframe>
 
@@ -47,33 +26,30 @@
 			<!-- BEGIN: top_left div -->
 			<!-- Contains back button and room name -->
 			<div id="top_left">
-				<div><a onclick="reload()" style=" vertical-align: middle"><span id="classroom"
-							class="classroom"></span></a>&nbsp;&nbsp;&nbsp;<div id = "classroomName">Classroom Not Found</div></div>
+				<div>
+					<a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow" class="ti-arrow-left"></span></a>&nbsp;&nbsp;&nbsp;
+					<div id = "classroom_name">Classroom Not Found</div>
+				</div>
 			</div>
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
 			<div id="classroom_mapping">
-
 			</div>
 
 			<div id="bottom_left">
 				<div class="pen-wrapper" style="display: inline-block">
-
 					<div class="buton-cover button-slide-out">
-						<span class="button-slide-out__above" style="text-align: center;" id="areYouSure">are you
-							sure?</span>
+						<span class="button-slide-out__above" style="text-align: center;" id="areYouSure">are you sure?</span>
 
 						<div class="button-slide-out__middle">
-							<button class="btn2" id="start_button" onclick="start_or_stop()"
-								style="-webkit-animation: pulse 1.8s infinite;" title="Start"><span
-									class="ti-control-play" style="vertical-align: -2px"></span></button>
+							<button class="btn2 circularButton" id="start_button" onclick="start()" style="-webkit-animation: pulse 1.8s infinite;" title="Start">
+								<span class="ti-control-play" style="vertical-align: -2px"></span>
+							</button>
 						</div>
 
 						<div class="button-slide-out__below">
-							<button class="btn2" id="cancelStop" onclick="full_stop()"
-								style="display:none">cancel</button>
+							<button class="btn2" id="cancelStop" onclick="stop()" style="display:none">cancel</button>
 						</div>
-
 					</div>
 				</div>
 
@@ -83,8 +59,7 @@
 						<span class="button-slide-out__above" style="text-align: center">are you sure?</span>
 
 						<div class="button-slide-out__middle">
-							<button class="btn" id="initiallyReset" onclick="resetButtonMixup()"
-								onmouseover="rotateIcon()" onmouseout="rotateIcon()">
+							<button class="btn" id="initiallyReset" onclick="confirmAction('initiallyReset', 'initiallyCancel')">
 								<div id="icon"><span class="ti-reload" style="vertical-align: -2px"></span></div>
 							</button>
 						</div>
@@ -96,29 +71,22 @@
 					</div>
 				</div>
 
-				<button class="circularButton" title="Feed" type="button" id="feed_button"
-					onclick="openFeed(event)"><span class="ti-list-ol" style="vertical-align: -2px"></span></button>
-				<div id="commentPopup" class="commentPopupStyle"></div>
-				<button class="circularButton" title="Comment" type="button" id="comment_button"
-					onclick="showCommentPopup(event)"><span class="ti-pencil" style="vertical-align: -2px"
-						onclick="showCommentPopup(event)"></span></button>
-				<br /><br />
-
-				<div style="text-align:center;">
-					<div id="persistingFeed" style="display: inline-block;"></div><br /><br />
-					<div class="fadingFeed" style="display: inline-block;"></div>
+				<div class="dropdown">
+					<button class="button">instructor activities</button>
+					<div class="dropdown-content">
+						<a href="db.php?action=L">Lecturing</a>
+						<a href="db.php?action=GD">Group Discussion</a>
+						<a href="db.php?action=AT">Administrative Task</a>
+						<a href="db.php?action=MM">Media</a>
+						<a href="db.php?action=ID">Idle</a>
+					</div>
 				</div>
-
-				<div id="feed" class="modal" style="text-align: left">
-					<!-- Modal content -->
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close"></span>
-							Feedback
-						</div>
-
-						<div class="modal-body"></div>
-
+				<div class="dropdown">
+					<button class="button">student activities</button>
+					<div class="dropdown-content">
+						<a href="db.php?action=SGW">Group Work</a>
+						<a href="db.php?action=DW">Invidual Work</a>
+						<a href="db.php?action=SP">Presentation</a>
 					</div>
 				</div>
 			</div>

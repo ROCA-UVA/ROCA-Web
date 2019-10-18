@@ -29,7 +29,9 @@
 	var building=(GetURLParameter('building'));
 	var roomNumber=(GetURLParameter('roomNumber'));
 	$(document).ready(function(){
-		document.getElementById("classroomName").innerHTML = building +" "+ roomNumber;
+		if(building !== undefined && building !== null && roomNumber !== undefined && roomNumber !== null){
+			document.getElementById("classroomName").innerHTML = building +" "+ roomNumber;
+		}
 	})
 	
 	</script>
@@ -48,116 +50,9 @@
 		<div id="left_side">
 			<!-- BEGIN: top_left div -->
 			<!-- Contains back button and room name -->
-			<!-- <form autocomplete="off" id="student_events_form" target="dump_data_frame"></form> -->
 			<div id="top_left">
 				<div><a onclick="reload()" style=" vertical-align: middle"><span id="classroom"
 							class="classroom"></span></a>&nbsp;&nbsp;&nbsp;<div id = "classroomName">Classroom Not Found</div></div>
-
-				<!-- NEEDS: Pull From Database -->
-				<div class="class_section_input" id="s1">
-					
-				</div>
-				<div class="class_section_input" id="s2">
-					<table style="width:auto; height:auto;">
-						<caption style="font-size: 40%; padding-top: 2%">Area 2</caption>
-						<tr>
-							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
-							</td>
-							<td><button class="circularButton2" title="Increment Students" type="button"
-									id="more_students" onclick="updateStudentNum(this,2)"
-									style="font-weight: bold; font-size: 70%;">+</button></td>
-							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
-								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
-								<button class="button2 event WC style=" width:100%">Responds to Student</button>
-								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
-							</td>
-						</tr>
-						<tr>
-							<td id="numStudentLabel2" style="font-size: small;">0</td>
-						</tr>
-						<tr>
-							<td><button class="circularButton2" title="Decrement Students" type="button"
-									id="less_students" onclick="updateStudentNum(this,2)"
-									style="font-weight: bold; font-size: 70%;">-</button></td>
-						</tr>
-					</table>
-				</div>
-				
-				<div class="class_section_input" id="s4">
-					<table style="width:auto; height:auto;">
-						<caption style="font-size: 40%; padding-top: 2%">Area 4</caption>
-						<tr>
-							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
-							</td>
-							<td><button class="circularButton2" title="Increment Students" type="button"
-									id="more_students" onclick="updateStudentNum(this,4)"
-									style="font-weight: bold; font-size: 70%;">+</button></td>
-							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
-								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
-								<button class="button2 event WC style=" width:100%">Responds to Student</button>
-								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
-							</td>
-						</tr>
-						<tr>
-							<td id="numStudentLabel4" style="font-size: small;">0</td>
-						</tr>
-						<tr>
-							<td><button class="circularButton2" title="Decrement Students" type="button"
-									id="less_students" onclick="updateStudentNum(this,4)"
-									style="font-weight: bold; font-size: 70%;">-</button></td>
-						</tr>
-					</table>
-				</div>
-				<div class="class_section_input" id="s5">
-					<table style="width:auto; height:auto;">
-						<caption style="font-size: 40%; padding-top: 2%">Area 5</caption>
-						<tr>
-							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
-							</td>
-							<td><button class="circularButton2" title="Increment Students" type="button"
-									id="more_students" onclick="updateStudentNum(this,5)"
-									style="font-weight: bold; font-size: 70%;">+</button></td>
-							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
-								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
-								<button class="button2 event WC style=" width:100%">Responds to Student</button>
-								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
-							</td>
-						</tr>
-						<tr>
-							<td id="numStudentLabel5" style="font-size: small;">0</td>
-						</tr>
-						<tr>
-							<td><button class="circularButton2" title="Decrement Students" type="button"
-									id="less_students" onclick="updateStudentNum(this,5)"
-									style="font-weight: bold; font-size: 70%;">-</button></td>
-						</tr>
-					</table>
-				</div>
-				<div class="class_section_input" id="s6">
-					<table style="width:auto; height:auto;">
-						<caption style="font-size: 40%; padding-top: 2%">Area 6</caption>
-						<tr>
-							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
-							</td>
-							<td><button class="circularButton2" title="Increment Students" type="button"
-									id="more_students" onclick="updateStudentNum(this,6)"
-									style="font-weight: bold; font-size: 70%;">+</button></td>
-							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
-								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
-								<button class="button2 event WC style=" width:100%">Responds to Student</button>
-								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
-							</td>
-						</tr>
-						<tr>
-							<td id="numStudentLabel6" style="font-size: small;">0</td>
-						</tr>
-						<tr>
-							<td><button class="circularButton2" title="Decrement Students" type="button"
-									id="less_students" onclick="updateStudentNum(this,6)"
-									style="font-weight: bold; font-size: 70%;">-</button></td>
-						</tr>
-					</table>
-				</div>
 			</div>
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
@@ -166,8 +61,6 @@
 			</div>
 
 			<div id="bottom_left">
-
-				<!--<button class="pulse-button" title="Start" type="button" onclick="start_or_stop()" id="start_button"><span class="ti-control-play" style="vertical-align: -2px"></span></button>-->
 				<div class="pen-wrapper" style="display: inline-block">
 
 					<div class="buton-cover button-slide-out">
@@ -187,7 +80,6 @@
 
 					</div>
 				</div>
-				<!---->
 
 				<div class="pen-wrapper" style="display: inline-block">
 

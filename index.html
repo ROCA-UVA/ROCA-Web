@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="ISO-8859-1">
 	<title>ROCA Observation Tool</title>
+	<link rel="stylesheet" href="assets/stylesheet.css">
+	<link rel="stylesheet" href="assets/themify-icons.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	function GetURLParameter(sParam)
@@ -93,24 +95,6 @@
 
 					</div>
 				</div>
-				<div class="dropdown" onmouseover="reactivateDropdowns()">
-					<button class="button">instructor activities</button>
-					<div class="dropdown-content">
-						<a href="db.php?action=L">Lecturing</a>
-						<a href="db.php?action=GD">Group Discussion</a>
-						<a href="db.php?action=AT">Administrative Task</a>
-						<a href="db.php?action=MM">Media</a>
-						<a href="db.php?action=ID">Idle</a>
-					</div>
-				</div>
-				<div class="dropdown" onmouseover="reactivateDropdowns()">
-					<button class="button">student activities</button>
-					<div class="dropdown-content">
-						<a href="db.php?action=SGW">Group Work</a>
-						<a href="db.php?action=DW">Invidual Work</a>
-						<a href="db.php?action=SP">Presentation</a>
-					</div>
-				</div>
 
 				<button class="circularButton" title="Feed" type="button" id="feed_button"
 					onclick="openFeed(event)"><span class="ti-list-ol" style="vertical-align: -2px"></span></button>
@@ -146,19 +130,54 @@
 		<div id="right_side">
 			<div id="interval_readings_form">
 				<div id="Pedagogical_Strategies">
+					<div class="dropdown">
+					<button class="side-button">instructor activities</button>
+					<div class="dropdown-content">
+						<a href="db.php?action=L">Lecturing</a>
+						<a href="db.php?action=GD">Group Discussion</a>
+						<a href="db.php?action=AT">Administrative Task</a>
+						<a href="db.php?action=MM">Media</a>
+						<a href="db.php?action=ID">Idle</a>
+					</div>
+					<br>
+				</div>
+				<div class="dropdown" onmouseover="reactivateDropdowns()">
+					<button class="side-button">student activities</button>
+					<div class="dropdown-content">
+						<a href="db.php?action=SGW">Group Work</a>
+						<a href="db.php?action=DW">Invidual Work</a>
+						<a href="db.php?action=SP">Presentation</a>
+					</div>
+				</div>
+
 					<div id="timer" style="text-align: center;"></div>
 					<div class="subheader">What is the instructor doing?</div>
 					<div class="checkbox-grid">
+						  	<button class="circular-side-button" title="Start" type="button" id="start_button"> PQ </button>
+						  	<button class="circular-side-button" title="Start" type="button" id="start_button"> RQ</button>
+						  	<button class="circular-side-button" title="Start" type="button" id="start_button"> CQ</button>
+						  	<button class="circular-side-button" title="Start" type="button" id="start_button"> AQ</button>
+	 		
 					</div>
 				</div>
 				<div id="Instructional Technologies">
 					<div class="subheader">What technologies are being used?</div>
 					<div class="checkbox-grid">
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> ND </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> D </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> PR </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> RS </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> W </button>
 					</div>
 				</div>
 				<div id="Student Engagement">
 					<div class="subheader">What are the students doing?</div>
 					<div class="checkbox-grid">
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> SW </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> ID </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> LA </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> TN </button>
+						<button class="pulse-side-button" title="Start" type="button" id="start_button"> D </button>
 					</div>
 				</div>
 			</div>

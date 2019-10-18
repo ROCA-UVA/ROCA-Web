@@ -29,11 +29,10 @@
 	var building=(GetURLParameter('building'));
 	var roomNumber=(GetURLParameter('roomNumber'));
 	$(document).ready(function(){
-		window.alert(building+roomNumber)
-		document.getElementById("classroomname").innerHTML = building + roomNumber;
-
+		document.getElementById("classroomName").innerHTML = building +" "+ roomNumber;
   		var element = document.getElementById("classroom_mapping");
-  		element.classList.add(building + roomNumber);
+  		element.classList.add(building);
+        element.classList.add(roomNumber);
 	})
 	
 	</script>
@@ -54,8 +53,8 @@
 			<!-- Contains back button and room name -->
 			<!-- <form autocomplete="off" id="student_events_form" target="dump_data_frame"></form> -->
 			<div id="top_left">
-				<div><a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow"
-							class="ti-arrow-left"></span></a>&nbsp;&nbsp;&nbsp;<div id = classroomName>Classroom Not Found</div></div>
+				<div><a onclick="reload()" style=" vertical-align: middle"><span id="classroom"
+							class="classroom"></span></a>&nbsp;&nbsp;&nbsp;<div id = "classroomName">Classroom Not Found</div></div>
 
 				<!-- NEEDS: Pull From Database -->
 				<div class="class_section_input" id="s1">
@@ -86,31 +85,7 @@
 						</tr>
 					</table>
 				</div>
-				<div class="class_section_input" id="s3">
-					<table style="width:auto; height:auto;">
-						<caption style="font-size: 40%; padding-top: 2%">Area 3</caption>
-						<tr>
-							<td rowspan="3"><span class="ti-user" style="vertical-align: -2px; font-size: 50%;"></span>
-							</td>
-							<td><button class="circularButton2" title="Increment Students" type="button"
-									id="more_students" onclick="updateStudentNum(this,3)"
-									style="font-weight: bold; font-size: 70%;">+</button></td>
-							<td rowspan="3"><button class="button2 event SQ style=" width:100%">Asks a Question</button>
-								<button class="button2 event SR style=" width:100%">Responds to Instructor</button>
-								<button class="button2 event WC style=" width:100%">Responds to Student</button>
-								<button class="button2 event PrD style=" width:100%">Whole Class Response</button>
-							</td>
-						</tr>
-						<tr>
-							<td id="numStudentLabel3" style="font-size: small;">0</td>
-						</tr>
-						<tr>
-							<td><button class="circularButton2" title="Decrement Students" type="button"
-									id="less_students" onclick="updateStudentNum(this,3)"
-									style="font-weight: bold; font-size: 70%;">-</button></td>
-						</tr>
-					</table>
-				</div>
+				
 				<div class="class_section_input" id="s4">
 					<table style="width:auto; height:auto;">
 						<caption style="font-size: 40%; padding-top: 2%">Area 4</caption>
@@ -313,3 +288,4 @@
 	</form>
 
 </body>
+</html>

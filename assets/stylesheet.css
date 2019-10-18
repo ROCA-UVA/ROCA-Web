@@ -594,3 +594,104 @@ button:focus {
 .button2:disabled {
 	background-color: gray;
 }
+
+.pulse-side-button {
+	-o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+	width: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: small;
+	font-family: 'product sans', sans-serif;
+	color: #ffffff;
+	background-color: #232323;
+    cursor: pointer;
+    margin: 5px;
+	height: 45px;
+	width: 45px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+	border-radius: 100px;
+	box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
+	-webkit-animation: pulse 1.8s infinite;
+  }
+
+  @-webkit-keyframes pulse {
+	0% {
+	  -moz-transform: scale(0.9);
+	  -ms-transform: scale(0.9);
+	  -webkit-transform: scale(0.9);
+	  transform: scale(0.9);
+	}
+	70% {
+	  -moz-transform: scale(1);
+	  -ms-transform: scale(1);
+	  -webkit-transform: scale(1);
+	  transform: scale(1);
+	  box-shadow: 0 0 0 5px rgba(0, 158, 50, 0.5);
+	}
+	100% {
+	  -moz-transform: scale(0.9);
+	  -ms-transform: scale(0.9);
+	  -webkit-transform: scale(0.9);
+	  transform: scale(0.9);
+	  box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
+	}
+  }
+
+#right_side{
+	margin-top: 15%;
+}
+
+.circular-side-button {
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+	width: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: small;
+	font-family: 'product sans', sans-serif;
+	color: #ffffff;
+	background-color: #232323;
+	cursor: pointer;
+	margin: 5px;
+	height: 45px;
+	width: 45px;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	border-radius: 100%;
+}
+
+.side-button {
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+	width: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: small;
+	font-family: 'product sans', sans-serif;
+	color: #ffffff;
+	background-color: #232323;
+	cursor: pointer;
+	margin: 5px;
+	height: 45px;
+	width: 150px;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	border-radius: 100px;
+	margin-bottom: 15%;
+}

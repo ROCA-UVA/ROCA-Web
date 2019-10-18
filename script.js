@@ -60,15 +60,15 @@ function confirmAction(cancel, action) {
 
 	if (cancel_button.innerHTML != "cancel") {
 		new_cancel = cancel_button;
-		new_reset = action_button;
+		new_action = action_button;
 	} else {
 		new_cancel = action_button;
-		new_reset = cancel_button;
+		new_action = cancel_button;
 	}
 
-	new_reset.style.backgroundColor = new_cancel.style.backgroundColor;
-	new_reset.style.color = new_cancel.style.color;
-	new_reset.innerHTML = new_cancel.innerHTML;
+	new_action.style.backgroundColor = new_cancel.style.backgroundColor;
+	new_action.style.color = new_cancel.style.color;
+	new_action.innerHTML = new_cancel.innerHTML;
 
 	new_cancel.style.backgroundColor = "#f1f1f1";
 	new_cancel.style.color = "#000";

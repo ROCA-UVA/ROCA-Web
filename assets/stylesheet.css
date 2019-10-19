@@ -94,7 +94,7 @@ body {
 .dropdown a:hover {
     background: #4390C1;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 
@@ -729,4 +729,7 @@ button:focus {
 	border-radius: 100px;
 }
 
+.circular-side-button:focus {
+	background-color: gray;
+}
 

@@ -20,6 +20,10 @@ function initConfig() {
 	if (building != undefined && room_number != undefined) {
 		document.getElementById("classroom_name").innerHTML = building + " " + room_number;
 	}
+
+	// Display corresponding classroom image
+	var image_path = "url(assets/images/".concat(building, "-", room_number, ".jpg)");
+	document.getElementById("classroom_mapping").style.backgroundImage = image_path;
 }
 
 function reload() {
@@ -39,8 +43,9 @@ function start() {
 	// Change start button to stop button
 	var start_button = document.getElementById("start_button");
 	start_button.innerHTML = "<span class='ti-control-stop' style='vertical-align: -2px'></span>";
-	start_button.style.backgroundColor = "red";
-	start_button.setAttribute("onclick", "confirmAction('cancelStop', 'start_button')");
+	start_button.setAttribute("style", "background-color: red");
+	start_button.setAttribute("onclick", "confirmAction('start_button', 'cancelStop', 'active_div')");
+	start_button.title = "Stop";
 }
 
 // Stop recording
@@ -54,28 +59,29 @@ function stop() {
 }
 
 // Display cancel button and action button
-function confirmAction(cancel, action) {
-	var cancel_button = document.getElementById(cancel);
-	var action_button = document.getElementById(action);
+function confirmAction(action, cancel, div_id) {
+	var cancel_button = document.getElementById(action);
+	var action_button = document.getElementById(cancel);
+	var button_div = document.getElementById(div_id);
 
 	if (cancel_button.innerHTML != "cancel") {
 		new_cancel = cancel_button;
 		new_action = action_button;
+		button_div.classList.add("is_active");
+
 	} else {
 		new_cancel = action_button;
 		new_action = cancel_button;
+		button_div.classList.remove("is_active");
 	}
 
 	new_action.style.backgroundColor = new_cancel.style.backgroundColor;
 	new_action.style.color = new_cancel.style.color;
 	new_action.innerHTML = new_cancel.innerHTML;
+	new_action.title = new_cancel.title;
 
 	new_cancel.style.backgroundColor = "#f1f1f1";
 	new_cancel.style.color = "#000";
 	new_cancel.innerHTML = "cancel";
-}
-
-function updateScroll() {
-	var element = document.getElementByClassName("modal-body");
-	element[0].scrollTop = element[0].scrollHeight;
+	new_cancel.title = "Cancel";
 }

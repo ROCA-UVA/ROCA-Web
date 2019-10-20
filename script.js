@@ -68,7 +68,6 @@ function confirmAction(action, cancel, div_id) {
 		new_cancel = cancel_button;
 		new_action = action_button;
 		button_div.classList.add("is_active");
-
 	} else {
 		new_cancel = action_button;
 		new_action = cancel_button;

@@ -3,6 +3,24 @@ var building;
 var room_number;
 var active = false; // recording status
 
+// Return current date (month/date/year)
+function getDate() {
+	var timestamp = new Date();
+	var month = timestamp.getMonth();
+	month = parseInt(month)+1;
+	return month+"/"+timestamp.getDate()+"/"+timestamp.getFullYear();
+}
+
+// Return current time (hrs:min)
+function getTime() {
+	var timestamp = new Date();
+	var min = timestamp.getMinutes();
+	if(min < "10") {
+		min = "0" + min;
+	}
+	return timestamp.getHours()+":"+min;
+}
+
 function initConfig() {
 	// Get URL parameters and set building/room number variables
 	var url = window.location.search.substring(1);
@@ -46,6 +64,9 @@ function start() {
 	start_button.setAttribute("style", "background-color: red");
 	start_button.setAttribute("onclick", "confirmAction('start_button', 'cancelStop', 'active_div')");
 	start_button.title = "Stop";
+
+	// Print date and time when observation is started
+	console.log("Observation started on "+getDate()+" at "+getTime());
 }
 
 // Stop recording
@@ -83,4 +104,9 @@ function confirmAction(action, cancel, div_id) {
 	new_cancel.style.color = "#000";
 	new_cancel.innerHTML = "cancel";
 	new_cancel.title = "Cancel";
+}
+
+// Print time and action when event button is pressed
+function logData(button_id) {
+	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
 }

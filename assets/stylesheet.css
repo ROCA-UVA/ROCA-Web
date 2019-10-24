@@ -148,7 +148,6 @@ body {
 	grid-template-rows: repeat(10, 10%);
 	grid-template-columns: repeat(30, 1fr);
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	background-image: url("room/images/THN-E316.jpg");
 }
 
 #left_side {
@@ -407,7 +406,7 @@ th, td {
 }
 
 .is_active .button-slide-out__above {
-  transform: translateX(100%);
+  transform: translateY(-70%);
 }
 
 .is_active .button-slide-out__below {
@@ -701,10 +700,6 @@ button:focus {
 	  box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
 	}
   }
-
-#right_side{
-	margin-top: 15%;
-}
 
 .circular-side-button {
 	-o-transition:.5s;

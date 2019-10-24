@@ -18,21 +18,94 @@ body {
 	margin: 0;
 }
 
-.dropdown {	
-    position: relative;
+.dropdown{
+	position: relative;
 	display: inline-block;
 }
 
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /** Allow no empty space between this and .dropdown */
+    margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+
+    /** Show dropdown menu */
+    display: block;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    display: none;
+    margin: 0;
+    list-style: none; /** Remove list bullets */
+    width: 100%; /** Set the width to 100% of it's parent */
+    padding: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/** Button Styles **/
+.dropdown button {
+    -o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+	width: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: small;
+	font-family: 'product sans', sans-serif;
+	color: #ffffff;
+	background-color: #232323;
+	cursor: pointer;
+	margin: 5px;
+	height: 40px;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	border-radius: 100px;
+	margin-bottom: 15%;
+}
+
+/** List Item Styles **/
+.dropdown a {
+    display: block;
+    padding: 0.2em 0.8em;
+    text-decoration: none;
+    background: white;
+    color: #333333;
+}
+
+/** List Item Hover Styles **/
+.dropdown a:hover {
+    background: #4390C1;
+    color: white;
+    border-radius: 5px;
+}
+
+
 .dropdown-content {
-  cursor: pointer;
   display: none;
-  position: absolute;
-  overflow: hidden;
+  position: relative;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);	
-  z-index: 999;
 }
+
 
 .dropdown-content a {
 	cursor: pointer;
@@ -53,20 +126,6 @@ body {
     -webkit-transition:.35s;
     transition:.35s;
 }
-
-.dropdown-content a:hover {
-	background-color:#33b5e5;
-	color: white;
-	cursor: pointer;
-}
-
-
-.dropdown:hover .dropdown-content {
-	border-radius: 15px;
-	display: block;
-	bottom:100%;
-}
-
 
 #timer {
 	display: block;
@@ -159,7 +218,6 @@ body {
 }
 
 .checkbox-grid {
-	display: grid;
 	grid-template-columns: 50% 25%;
 	padding-left: 25%;
 	padding-top: 5%;	
@@ -611,14 +669,14 @@ button:focus {
 	background-color: #232323;
     cursor: pointer;
     margin: 5px;
-	height: 45px;
-	width: 45px;
+	height: 30px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
 	border-radius: 100px;
 	box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
 	-webkit-animation: pulse 1.8s infinite;
+	display: block;
   }
 
   @-webkit-keyframes pulse {
@@ -633,7 +691,7 @@ button:focus {
 	  -ms-transform: scale(1);
 	  -webkit-transform: scale(1);
 	  transform: scale(1);
-	  box-shadow: 0 0 0 5px rgba(0, 158, 50, 0.5);
+	  box-shadow: 0 0 0 2px rgba(0, 158, 50, 0.5);
 	}
 	100% {
 	  -moz-transform: scale(0.9);
@@ -663,38 +721,15 @@ button:focus {
 	background-color: #232323;
 	cursor: pointer;
 	margin: 5px;
-	height: 45px;
-	width: 45px;
-	text-align:center;
-	border: none;
-	background-size: 300% 100%;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	border-radius: 100%;
-}
-
-.side-button {
-	-o-transition:.5s;
-	-ms-transition:.5s;
-	-moz-transition:.5s;
-	-webkit-transition:.5s;
-	transition:.5s;
-	width: auto;
-	padding-right: 15px;
-	padding-left: 15px;
-	font-size: small;
-	font-family: 'product sans', sans-serif;
-	color: #ffffff;
-	background-color: #232323;
-	cursor: pointer;
-	margin: 5px;
-	height: 45px;
-	width: 150px;
+	height: 30px;
 	text-align:center;
 	border: none;
 	background-size: 300% 100%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 	border-radius: 100px;
-	margin-bottom: 15%;
 }
 
+.circular-side-button:focus {
+	background-color: gray;
+}
 

@@ -728,12 +728,6 @@ button:focus {
 	background-color: gray;
 }
 
-
-.wrapper {
-	display: grid;
-	grid-template-columns: btn-column;
-	grid-template-rows: row;
-}
 /* comment box */
 .comment {
 	width: 100%;
@@ -746,33 +740,25 @@ button:focus {
 	resize: none;
 }
 
-/* first row of buttons */
-.btn-column {
+/* play button, reset button, comments bar, send button */
+.bottom-row {
 	float: left;
-	width: 80%;
+	width: 100%;
   }
 
-  
-/* first row of buttons, wider distance */
-.btn-column2 {
-	float: left;
-	width: 13.5%;
-  }
-  /* second row comments bar */
-.comments-column {
+/* play button */
+.play-reset-btn {
 	float: left;
 	width: 30%;
 }
 
-/* second row send button */
-.send-btn-column {
-	float: right;
+/* comments bar */
+.comments-column {
+	float: left;
+	width: 60%;
+}
+  /* send button */
+.send-btn {
+	float: left;
 	width: 10%;
 }
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-  }

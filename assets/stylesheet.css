@@ -14,7 +14,7 @@ body {
 	height: 50%;
 	flex-grow: 1;
 	font-family: product sans, sans-serif;
-	padding: 1%;
+	padding: 0.5%;
 	margin: 0;
 }
 
@@ -152,7 +152,7 @@ body {
 
 #left_side {
 	display: grid;
-	grid-template-rows: 10% 60% 24%;
+	grid-template-rows: 5% 60% 24%; /*reduce gap between Room title and image*/
 	grid-gap: 2%;
 }
 
@@ -339,18 +339,7 @@ th, td {
   box-sizing: border-box;
 }
 
-.button-slide-out__above {
-  display: block;
-  min-width: 120px;
-  border: none;
-  padding: 0 1em;
-  font-size: 16px;
-  color: #000;
-  line-height: 65px;
-  text-align: center;
-  background: none;
-  transition: background .3s ease;
-}
+
 
 .fadingFeed {
 	align-content: center
@@ -406,11 +395,11 @@ th, td {
 }
 
 .is_active .button-slide-out__above {
-  transform: translateY(-70%);
+  transform: translateY(-100%);
 }
 
 .is_active .button-slide-out__below {
-  transform: translateY(100%);
+  transform: translateY(0%);
 }
 
 .button {
@@ -752,13 +741,8 @@ button:focus {
 	width: 80%;
   }
 
-  
-/* first row of buttons, wider distance */
-.btn-column2 {
-	float: left;
-	width: 13.5%;
-  }
-  /* second row comments bar */
+
+/* second row comments bar */
 .comments-column {
 	float: left;
 	width: 30%;
@@ -775,4 +759,22 @@ button:focus {
 	content: "";
 	display: table;
 	clear: both;
+  }
+
+/* comment box */ 
+  form {
+	  display: flex;
+  }
+  
+  textarea {
+	display: inline-block;
+	width: 50%;
+	resize: none;
+  }
+  
+  #submit {
+	display: inline-block;
+	width: 10%;
+	background: black;
+	color: white
   }

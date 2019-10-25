@@ -34,6 +34,7 @@
 			</div>
 
 			<div id="bottom_left">
+			<div class="btn-column">			
 				<div class="pen-wrapper" style="display: inline-block">
 					<div class="buton-cover button-slide-out" id="active_div">
 						<span class="button-slide-out__above" style="text-align: center" id="areYouSure">are you sure?</span>
@@ -67,7 +68,21 @@
 
 					</div>
 				</div>
+
+		
+				<!-- comments text area -->
+				<div class="comments-column">	
+					<textarea placeholder="Type your comments here..." class="comment" style = "margin-left:0%;margin-right:auto;display:block;margin-bottom:0%" ></textarea>
+				</div>
+		
+				<div class="send-btn-column">
+					<button class="circularButton" title="Send" type="button" id="comments_button"
+						onclick="logData('comments_button')"><span class="ti-pencil" style="vertical-align: -2px"></span>
+					</button>
+				</div>
 			</div>
+		</div>
+
 		</div>
 		<!-- END: left_side div -->
 

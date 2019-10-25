@@ -728,3 +728,51 @@ button:focus {
 	background-color: gray;
 }
 
+
+.wrapper {
+	display: grid;
+	grid-template-columns: btn-column;
+	grid-template-rows: row;
+}
+/* comment box */
+.comment {
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	background-color: #d0e2bc;
+	font: 1.4em/1.6em cursive;
+	font-size: small;
+	color: #095484;
+	resize: none;
+}
+
+/* first row of buttons */
+.btn-column {
+	float: left;
+	width: 80%;
+  }
+
+  
+/* first row of buttons, wider distance */
+.btn-column2 {
+	float: left;
+	width: 13.5%;
+  }
+  /* second row comments bar */
+.comments-column {
+	float: left;
+	width: 30%;
+}
+
+/* second row send button */
+.send-btn-column {
+	float: right;
+	width: 10%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }

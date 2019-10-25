@@ -46,8 +46,8 @@ INSERT INTO `room` (`ID`, `roomName`) VALUES ('1', 'MSB202'), ('2', 'PLSB310'), 
 CREATE TABLE `room_coordinates` ( 
     `ID` INT NOT NULL AUTO_INCREMENT , 
     `rID` INT NOT NULL COMMENT 'room ID' , 
-    `sP` INT NOT NULL COMMENT 'starting point' , 
-    `eP` INT NOT NULL COMMENT 'ending point' , 
+    `sP` VARCHAR(5) NOT NULL COMMENT 'starting point' , 
+    `eP` VARCHAR(5) NOT NULL COMMENT 'ending point' , 
     `sID` INT NOT NULL COMMENT 'section ID' , 
     PRIMARY KEY (`ID`)
     ) ENGINE = InnoDB;
@@ -56,13 +56,13 @@ CREATE TABLE `room_coordinates` (
 -- Dumping data for table `room_coordinates`
 --
 INSERT INTO `room_coordinates` (`ID`, `rID`, `sP`, `eP`, `sID`) VALUES
- ('1', '1', '1', '2', '1'), 
- ('2', '1', '4', '5', '2'), 
- ('3', '1', '24', '53', '3'), 
- ('4', '1', '12', '33', '4'), 
- ('5', '1', '52', '74', '5'), 
- ('6', '1', '23', '55', '6'), 
- ('7', '2', '42', '11', '1');
+ ('1', '1', '12.34', '24.29', '1'), 
+ ('2', '1', '43.24', '5.983', '2'), 
+ ('3', '1', '24.14', '53.25', '3'), 
+ ('4', '1', '12.64', '33.34', '4'), 
+ ('5', '1', '52.84', '74.64', '5'), 
+ ('6', '1', '23.23', '55.23', '6'), 
+ ('7', '2', '42.64', '11.23', '1');
 
 
 

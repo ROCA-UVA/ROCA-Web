@@ -717,12 +717,6 @@ button:focus {
 	background-color: gray;
 }
 
-
-.wrapper {
-	display: grid;
-	grid-template-columns: btn-column;
-	grid-template-rows: row;
-}
 /* comment box */
 .comment {
 	width: 100%;
@@ -735,24 +729,35 @@ button:focus {
 	resize: none;
 }
 
-/* first row of buttons */
-.btn-column {
+/* play button, reset button, comments bar, send button */
+.bottom-row {
 	float: left;
-	width: 80%;
+	width: 100%;
   }
 
+<<<<<<< HEAD
 
 /* second row comments bar */
 .comments-column {
+=======
+/* play button */
+.play-reset-btn {
+>>>>>>> 72e947dec29f5ee9bde087ade05f94555061722a
 	float: left;
 	width: 30%;
 }
 
-/* second row send button */
-.send-btn-column {
-	float: right;
+/* comments bar */
+.comments-column {
+	float: left;
+	width: 60%;
+}
+  /* send button */
+.send-btn {
+	float: left;
 	width: 10%;
 }
+<<<<<<< HEAD
 
 /* Clear floats after the columns */
 .row:after {
@@ -778,3 +783,5 @@ button:focus {
 	background: black;
 	color: white
   }
+=======
+>>>>>>> 72e947dec29f5ee9bde087ade05f94555061722a

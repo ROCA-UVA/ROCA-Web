@@ -717,6 +717,7 @@ button:focus {
 	background-color: gray;
 }
 
+
 /* comment box */
 .comment {
 	width: 100%;
@@ -735,53 +736,41 @@ button:focus {
 	width: 100%;
   }
 
-<<<<<<< HEAD
 
-/* second row comments bar */
-.comments-column {
-=======
 /* play button */
 .play-reset-btn {
->>>>>>> 72e947dec29f5ee9bde087ade05f94555061722a
 	float: left;
 	width: 30%;
+	position: relative;
+	left: 5%;
 }
-
-/* comments bar */
-.comments-column {
-	float: left;
-	width: 60%;
-}
-  /* send button */
-.send-btn {
-	float: left;
-	width: 10%;
-}
-<<<<<<< HEAD
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-  }
 
 /* comment box */ 
   form {
 	  display: flex;
+	  padding: 0.75%;
+	  position: relative;
+	  left: 5%;
+	  resize: both;
   }
   
   textarea {
 	display: inline-block;
-	width: 50%;
+	width: 70%;
 	resize: none;
+	border-radius: 20px;
+	box-shadow:0 1px 2px #aaa;
+	border: 2px solid black;
+	outline: none !important;
+
   }
   
   #submit {
 	display: inline-block;
 	width: 10%;
 	background: black;
-	color: white
+	color:white;
+	border-radius: 20px;
+	position: relative;
+	left: 0%;
   }
-=======
->>>>>>> 72e947dec29f5ee9bde087ade05f94555061722a

@@ -30,59 +30,57 @@
 			</div>
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
-			<div id="classroom_mapping">
-			</div>
+			<div id="classroom_mapping"></div>
 
 			<div class="bottom-row">
-					<div id="bottom_left">		
-						<div class="play-reset-btn">
-							<div class="pen-wrapper" style="display: inline-block">
-								<div class="buton-cover button-slide-out" id="active_div">
-									<div class="button-slide-out__above">
-											<button class="btn" id="initiallyCancel" onclick="reload()">Stop</button>
-									</div>
-
-									<div class="button-slide-out__middle">
-										<button class="btn" id="start_button" onclick="start()" style="-webkit-animation: pulse 1.8s infinite" title="Start">
-											<span class="ti-control-play" style="vertical-align: -2px"></span>
-										</button>
-									</div>
-	
-									<div class="button-slide-out__below">
-										<button class="btn" id="cancelStop" onclick="stop()">cancel</button>
-									</div>
+				<div id="bottom_left">		
+					<div class="play-reset-btn">
+						<div class="pen-wrapper" style="display: inline-block">
+							<div class="buton-cover button-slide-out" id="active_div">
+								<div class="button-slide-out__above">
+									<button class="btn" id="initiallyCancel" onclick="reload()">Stop</button>
 								</div>
-							</div>
-	
-							<div class="pen-wrapper" style="display: inline-block">
-	
-								<div class="buton-cover button-slide-out" id="reset_div">
-									<div class="button-slide-out__above">
-											<button class="btn" id="initiallyReset" onclick="reload()">Reset</button>
-									</div>	
 
-									<div class="button-slide-out__middle">
-										<button class="btn" id="reset_button" onclick="confirmAction('reset_button', 'cancelReset', 'reset_div')" title="Reset">
-											<div id="icon"><span class="ti-reload" style="vertical-align: -2px"></span></div>
-										</button>
-									</div>
-	
-									<div class="button-slide-out__below">
-										<button class="btn" id="cancelReset" onclick="reload()">cancel</button>
-									</div>
-	
+								<div class="button-slide-out__middle">
+									<button class="btn" id="start_button" onclick="start()" style="-webkit-animation: pulse 1.8s infinite" title="Start">
+										<span class="ti-control-play" style="vertical-align: -2px"></span>
+									</button>
+								</div>
+
+								<div class="button-slide-out__below">
+									<button class="btn" id="cancelStop" onclick="stop()">cancel</button>
 								</div>
 							</div>
 						</div>
-	
-						<!-- comments text area -->					
-						<form>
-								<textarea cols="30" rows="3" placeholder=" Text here"></textarea>
-								<input id="submit" type="submit" value="Send">
-						</form>
-					</div>
-				</div>
 
+						<div class="pen-wrapper" style="display: inline-block">
+
+							<div class="buton-cover button-slide-out" id="reset_div">
+								<div class="button-slide-out__above">
+										<button class="btn" id="initiallyReset" onclick="reload()">Reset</button>
+								</div>	
+
+								<div class="button-slide-out__middle">
+									<button class="btn" id="reset_button" onclick="confirmAction('reset_button', 'cancelReset', 'reset_div')" title="Reset">
+										<div id="icon"><span class="ti-reload" style="vertical-align: -2px"></span></div>
+									</button>
+								</div>
+
+								<div class="button-slide-out__below">
+									<button class="btn" id="cancelReset" onclick="reload()">cancel</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- comments text area -->					
+					<form>
+						<textarea cols="40" rows="3" placeholder="Enter comment"></textarea>
+						<input id="submit" type="submit" value="Send">
+					</form>
+				</div>
+			</div>
 		</div>
 		<!-- END: left_side div -->
 

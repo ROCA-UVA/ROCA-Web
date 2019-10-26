@@ -718,59 +718,44 @@ button:focus {
 }
 
 
-/* comment box */
-.comment {
-	width: 100%;
-	height: 50px;
-	padding: 10px;
-	background-color: #d0e2bc;
-	font: 1.4em/1.6em cursive;
-	font-size: small;
-	color: #095484;
-	resize: none;
-}
-
 /* play button, reset button, comments bar, send button */
 .bottom-row {
 	float: left;
-	width: 100%;
+	max-width: 1000px;
   }
-
 
 /* play button */
 .play-reset-btn {
 	float: left;
-	width: 30%;
-	position: relative;
-	left: 5%;
+	max-width: 300px;
 }
 
 /* comment box */ 
-  form {
-	  display: flex;
-	  padding: 0.75%;
-	  position: relative;
-	  left: 5%;
-	  resize: both;
-  }
+form {
+	display: flex;
+	padding: 0.75%;
+	float: left;
+	max-width: 700px;
+	resize: both;
+}
   
-  textarea {
+textarea {
 	display: inline-block;
-	width: 70%;
+	max-width: 700px;
 	resize: none;
 	border-radius: 20px;
 	box-shadow:0 1px 2px #aaa;
 	border: 2px solid black;
 	outline: none !important;
+	text-indent: 10px;
+}
 
-  }
-  
-  #submit {
+#submit {
 	display: inline-block;
-	width: 10%;
+	max-width: 200px;
 	background: black;
 	color:white;
 	border-radius: 20px;
 	position: relative;
 	left: 0%;
-  }
+}

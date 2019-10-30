@@ -69,6 +69,7 @@ function start() {
 	console.log("Observation started on "+getDate()+" at "+getTime());
 }
 
+
 // Stop recording
 function stop() {
 	active = false;
@@ -109,4 +110,7 @@ function confirmAction(action, cancel, div_id) {
 // Print time and action when event button is pressed
 function logData(button_id) {
 	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
+	var button_item = document.getElementById(button_id);
+	button_item.setAttribute("style", "background-color: #FF6347");
 }
+

@@ -87,6 +87,7 @@
 		<!-- BEGIN: right_side div -->
 		<!-- Contains interval reading form -->
 		<div id="right_side">
+			<div id="timer" style="text-align: center;"></div>
 			<div class="dropdown">
 			    <!-- trigger button -->
 			    <button>Instructor Activity</button>
@@ -112,31 +113,34 @@
 
 			<div id="interval_readings_form">
 					<div id="timer" style="text-align: center;"></div>
-					<div class="subheader">What is the instructor doing?</div>
+				<div id="Instructor Engagement">
+					<div class="subheader">Instructor</div>
 					<div class="checkbox-grid">
 						  	<button class="circular-side-button" title="Poses Question" type="button" id="pq_button" onclick="logData('pq_button')"> Poses Question </button>
 						  	<button class="circular-side-button" title="Rhetoric Question" type="button" id="rq_button" onclick="logData('rq_button')"> Rhetorical Question </button>
 						  	<button class="circular-side-button" title="Comprehension Question" type="button" id="cq_button" onclick="logData('cq_button')"> Comprehensive Question </button>
 						  	<button class="circular-side-button" title="Answers Question" type="button" id="aq_button" onclick="logData('aq_button')"> Answers Question </button>
-					</div>
-				<div id="Instructional Technologies">
-					<div class="subheader">What technologies are being used?</div>
-					<div class="checkbox-grid">
-						<button class="pulse-side-button" title="Non Digital" type="button" id="nd_button" onclick="logData('nd_button')"> Non Digital </button>
-						<button class="pulse-side-button" title="Digital" type="button" id="dig_button" onclick="logData('dig_button')"> Digital </button>
-						<button class="pulse-side-button" title="Projection" type="button" id="pro_button" onclick="logData('pro_button')"> Projection </button>
-						<button class="pulse-side-button" title="Response System" type="button" id="rs_button" onclick="logData('rs_button')"> Response System </button>
-						<button class="pulse-side-button" title="Website" type="button" id="w_button" onclick="logData('w_button')"> Website </button>
+
 					</div>
 				</div>
 				<div id="Student Engagement">
-					<div class="subheader">What are the students doing?</div>
+					<div class="subheader">Student</div>
 					<div class="checkbox-grid">
 						<button class="pulse-side-button" title="Structured Work" type="button" id="sw_button" onclick="logData('sw_button')"> Structured Work </button>
 						<button class="pulse-side-button" title="Informal Discussion" type="button" id="id_button" onclick="logData('id_button')"> Informal Discussion </button>
 						<button class="pulse-side-button" title="Live Action" type="button" id="la_button" onclick="logData('la_button')"> Live Action </button>
 						<button class="pulse-side-button" title="Taking Notes" type="button" id="tn_button" onclick="logData('tn_button')"> Taking Notes </button>
 						<button class="pulse-side-button" title="Distracted" type="button" id="dis_button" onclick="logData('dis_button')"> Distracted </button>
+					</div>
+				</div>
+				<div id="Instructional Technologies">
+					<div class="subheader">Technology</div>
+					<div class="checkbox-grid">
+						<button class="pulse-side-button" title="Non Digital" type="button" id="nd_button" onclick="logData('nd_button')"> Non Digital </button>
+						<button class="pulse-side-button" title="Digital" type="button" id="dig_button" onclick="logData('dig_button')"> Digital </button>
+						<button class="pulse-side-button" title="Projection" type="button" id="pro_button" onclick="logData('pro_button')"> Projection </button>
+						<button class="pulse-side-button" title="Response System" type="button" id="rs_button" onclick="logData('rs_button')"> Response System </button>
+						<button class="pulse-side-button" title="Website" type="button" id="w_button" onclick="logData('w_button')"> Website </button>
 					</div>
 				</div>
 			</div>

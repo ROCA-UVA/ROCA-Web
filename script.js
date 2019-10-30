@@ -69,6 +69,7 @@ function start() {
 	console.log("Observation started on "+getDate()+" at "+getTime());
 }
 
+
 // Stop recording
 function stop() {
 	active = false;

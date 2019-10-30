@@ -218,7 +218,6 @@ body {
 
 .checkbox-grid {
 	grid-template-columns: 50% 25%;
-	padding-left: 25%;
 	padding-top: 5%;	
 }
 
@@ -321,9 +320,9 @@ body {
 
 .subheader {
 	font-weight: bold;
-	font-size: large;
-	color: #000000;
-	text-align: center;
+	font-size: 16px;
+	color: #4390C1;
+
 }
 
 #dump_data_frame {
@@ -660,23 +659,25 @@ button:focus {
     -webkit-transition:.5s;
     transition:.5s;
 	width: auto;
-	padding-right: 15px;
 	padding-left: 15px;
-	font-size: small;
+	padding-right: 15px;
+	font-size: 11px;
 	font-family: 'product sans', sans-serif;
 	color: #ffffff;
 	background-color: #232323;
     cursor: pointer;
     margin: 5px;
-	height: 30px;
+	height: 25px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
 	border-radius: 100px;
 	box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
-	-webkit-animation: pulse 1.8s infinite;
-	display: block;
+
   }
+
+.pulse-side-button:hover{
+  -webkit-animation: pulse 1.8s infinite;
 
   @-webkit-keyframes pulse {
 	0% {
@@ -700,6 +701,7 @@ button:focus {
 	  box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
 	}
   }
+ }
 
 .circular-side-button {
 	-o-transition:.5s;
@@ -710,13 +712,13 @@ button:focus {
 	width: auto;
 	padding-right: 15px;
 	padding-left: 15px;
-	font-size: small;
+	font-size: 11px;
 	font-family: 'product sans', sans-serif;
 	color: #ffffff;
 	background-color: #232323;
 	cursor: pointer;
 	margin: 5px;
-	height: 30px;
+	height: 25px;
 	text-align:center;
 	border: none;
 	background-size: 300% 100%;

@@ -9,7 +9,7 @@ html {
 	background: #f2f2f2;
 	margin: 0;	
 }
- 
+  
 body {
 	height: 50%;
 	flex-grow: 1;
@@ -44,11 +44,11 @@ body {
 
 .dropdown .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 104%;
     display: none;
     margin: 0;
     list-style: none; /** Remove list bullets */
-    width: 100%; /** Set the width to 100% of it's parent */
+    width: 136px; /** Set the width to 100% of it's parent */
     padding: 0;
 }
 
@@ -63,13 +63,13 @@ body {
 	-moz-transition:.5s;
 	-webkit-transition:.5s;
 	transition:.5s;
-	width: auto;
+	width: 136px;
 	padding-right: 15px;
 	padding-left: 15px;
 	font-size: small;
 	font-family: 'product sans', sans-serif;
-	color: #ffffff;
-	background-color: #232323;
+	color: #ffff;
+	background-color: #3B769C;
 	cursor: pointer;
 	margin: 5px;
 	height: 40px;
@@ -77,12 +77,12 @@ body {
 	border: none;
 	background-size: 300% 100%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	border-radius: 100px;
-	margin-bottom: 15%;
+	border-radius: 20px;
+	margin-bottom: 0%;
 }
 
 /** List Item Styles **/
-.dropdown a {
+.dropdown li {
     display: block;
     padding: 0.2em 0.8em;
     text-decoration: none;
@@ -91,7 +91,7 @@ body {
 }
 
 /** List Item Hover Styles **/
-.dropdown a:hover {
+.dropdown li:hover {
     background: #4390C1;
     color: white;
     border-radius: 5px;
@@ -107,7 +107,7 @@ body {
 }
 
 
-.dropdown-content a {
+.dropdown-content li {
 	cursor: pointer;
 	-o-transition:.25s;
     -ms-transition:.25s;

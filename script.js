@@ -114,3 +114,7 @@ function logData(button_id) {
 	button_item.setAttribute("style", "background-color: #FF6347");
 }
 
+function dropdown_select(button_id, new_value){
+	var dropdown_button = document.getElementById(button_id);
+	dropdown_button.innerHTML = new_value;
+}

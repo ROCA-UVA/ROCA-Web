@@ -732,32 +732,31 @@ button:focus {
 	max-width: 300px;
 }
 
-/* comment box */ 
-form {
-	display: flex;
-	padding: 0.75%;
-	float: left;
-	max-width: 700px;
-	resize: both;
-}
-  
-textarea {
+input[type="text"] {
+    padding: 1%;
+    height: 45px;
 	display: inline-block;
-	max-width: 700px;
+	width: 30%;
 	resize: none;
 	border-radius: 20px;
 	box-shadow:0 1px 2px #aaa;
-	border: 2px solid black;
+	border: 0;
 	outline: none !important;
 	text-indent: 10px;
+	margin: 10px;
+
+
 }
 
-#submit {
-	display: inline-block;
-	max-width: 200px;
-	background: black;
-	color:white;
-	border-radius: 20px;
-	position: relative;
-	left: 0%;
+button[type="submit"] {
+    margin-left: -55px;
+    border-radius: 100px;
+    color: white;
+    height: 35px;
+    width: 35px;
+    font-size: 16px;
+	font-family: 'product sans', sans-serif;
+	background-color: #232323;
 }
+
+

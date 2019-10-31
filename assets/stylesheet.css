@@ -14,7 +14,7 @@ body {
 	height: 50%;
 	flex-grow: 1;
 	font-family: product sans, sans-serif;
-	padding: 1%;
+	padding: 0.5%;
 	margin: 0;
 }
 
@@ -152,7 +152,7 @@ body {
 
 #left_side {
 	display: grid;
-	grid-template-rows: 10% 60% 24%;
+	grid-template-rows: 5% 60% 24%; /*reduce gap between Room title and image*/
 	grid-gap: 2%;
 }
 
@@ -338,18 +338,7 @@ th, td {
   box-sizing: border-box;
 }
 
-.button-slide-out__above {
-  display: block;
-  min-width: 120px;
-  border: none;
-  padding: 0 1em;
-  font-size: 16px;
-  color: #000;
-  line-height: 65px;
-  text-align: center;
-  background: none;
-  transition: background .3s ease;
-}
+
 
 .fadingFeed {
 	align-content: center
@@ -405,11 +394,11 @@ th, td {
 }
 
 .is_active .button-slide-out__above {
-  transform: translateY(-70%);
+  transform: translateY(-100%);
 }
 
 .is_active .button-slide-out__below {
-  transform: translateY(100%);
+  transform: translateY(0%);
 }
 
 .button {
@@ -730,3 +719,45 @@ button:focus {
 	background-color: gray;
 }
 
+
+/* play button, reset button, comments bar, send button */
+.bottom-row {
+	float: left;
+	max-width: 1000px;
+  }
+
+/* play button */
+.play-reset-btn {
+	float: left;
+	max-width: 300px;
+}
+
+/* comment box */ 
+form {
+	display: flex;
+	padding: 0.75%;
+	float: left;
+	max-width: 700px;
+	resize: both;
+}
+  
+textarea {
+	display: inline-block;
+	max-width: 700px;
+	resize: none;
+	border-radius: 20px;
+	box-shadow:0 1px 2px #aaa;
+	border: 2px solid black;
+	outline: none !important;
+	text-indent: 10px;
+}
+
+#submit {
+	display: inline-block;
+	max-width: 200px;
+	background: black;
+	color:white;
+	border-radius: 20px;
+	position: relative;
+	left: 0%;
+}

@@ -244,6 +244,37 @@ body {
   transform: translateY(100%);
 }
 
+.button {
+	-o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+	min-width: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: large;
+	font-family: 'product sans', sans-serif;
+	color: #ffffff;
+	background-color: #232323;
+    cursor: pointer;
+    margin: 5px;
+	height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	border-radius: 100px;
+}
+
+button:hover {
+	-webkit-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
 button:focus {
 	outline:0;
 }
@@ -371,7 +402,7 @@ button:focus {
 	max-width: 1000px;
   }
 
-/* play button */
+/* play and reset button */
 .play-reset-btn {
 	float: left;
 	max-width: 300px;

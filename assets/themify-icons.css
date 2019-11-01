@@ -39,3 +39,7 @@
 .ti-pencil:before {
 	content: "\e61c";
 }
+/* stop icon*/
+.ti-control-stop:before {
+	content: "\e6ab";
+}

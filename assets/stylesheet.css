@@ -226,6 +226,11 @@ body {
 	padding-top: 10px;
 	padding-bottom: 5px;
 }
+.timer{
+	font-size: 11px;
+	color: white;
+	text-align: center;
+}
 .grid_boxes {
  	display: block;
  	color: white;

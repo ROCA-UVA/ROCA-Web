@@ -95,11 +95,11 @@
 			    <button>Instructor Activity</button>
 			    <!-- dropdown menu -->
 			    <ul class="dropdown-menu">
-			        <li><a href="#">Lecturing</a></li>
-			        <li><a href="#">Group Discussion</a></li>
-			        <li><a href="#">Administrative Task</a></li>
-			        <li><a href="#">Media</a></li>
-			        <li><a href="#">Idle</a></li>
+			        <li><a id="lecturing" onclick="logData('lecturing')">Lecturing</a></li>
+			        <li><a id="group_discussion" onclick="logData('group_discussion')">Group Discussion</a></li>
+			        <li><a id="admin_task" onclick="logData('admin_task')">Administrative Task</a></li>
+			        <li><a id="media" onclick="logData('media')">Media</a></li>
+			        <li><a id="idle" onclick="logData('idle')">Idle</a></li>
 			    </ul>
 			</div>
 			<div class="dropdown">
@@ -107,9 +107,9 @@
 			    <button>Student Activity</button>
 			    <!-- dropdown menu -->
 			    <ul class="dropdown-menu">
-			        <li><a href="#">Group Work</a></li>
-			        <li><a href="#">Individual Work</a></li>
-			        <li><a href="#">Presentation</a></li>
+			        <li><a id="group_work" onclick="logData('group_work')">Group Work</a></li>
+			        <li><a id="ind_work" onclick="logData('ind_work')">Individual Work</a></li>
+			        <li><a id="presentation" onclick="logData('presentation')">Presentation</a></li>
 			    </ul>
 			</div>
 

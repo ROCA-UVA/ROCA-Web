@@ -119,9 +119,11 @@ function logData(id) {
 				console.log("["+getTime()+"] Start of "+element.title);
 				element.setAttribute("style", "background-color: red");
 			}
-		} else if (element.id == "comment") {
+		} else if (element.nodeName == "INPUT") {
 			console.log("["+getTime()+"] Additional notes: "+element.value);
 			element.value = "";
+		} else if (element.nodeName == "A") {
+			console.log("["+getTime()+"] Activity: "+element.innerHTML);
 		} else {
 			console.log("["+getTime()+"] "+element.title);
 		}

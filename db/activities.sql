@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `activities` (
   `observationID` int(11) NOT NULL,
   `acbID` int(11) NOT NULL,
   `startTime` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `endTime` varchar(10) CHARACTER SET latin1 NOT NULL
+  `endTime` varchar(10) CHARACTER SET latin1 NOT NULL,
+   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -42,10 +43,13 @@ CREATE TABLE IF NOT EXISTS `activities` (
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
-  ADD PRIMARY KEY (`id`);
   ADD FOREIGN KEY (`acbID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `activities`
   ADD FOREIGN KEY (`observationID`) REFERENCES `observations`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-  
+   
+ COMMIT;
+ 
+ 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

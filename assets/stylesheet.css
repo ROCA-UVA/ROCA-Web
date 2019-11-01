@@ -720,7 +720,7 @@ button:focus {
 }
 
 
-/* play button, reset button, comments bar, send button */
+/* play button, reset button, comments section */
 .bottom-row {
 	float: left;
 	max-width: 1000px;
@@ -732,32 +732,35 @@ button:focus {
 	max-width: 300px;
 }
 
-/* comment box */ 
-form {
-	display: flex;
-	padding: 0.75%;
-	float: left;
-	max-width: 700px;
-	resize: both;
-}
-  
-textarea {
+input[type="text"] {
+    padding: 1%;
+    height: 55px;
 	display: inline-block;
-	max-width: 700px;
+	width: 280px;
 	resize: none;
-	border-radius: 20px;
+	border-radius: 100px;
 	box-shadow:0 1px 2px #aaa;
-	border: 2px solid black;
+	border: 0;
 	outline: none !important;
 	text-indent: 10px;
+	margin: 5px;
+	margin-left: 10px;
 }
 
-#submit {
-	display: inline-block;
-	max-width: 200px;
-	background: black;
-	color:white;
-	border-radius: 20px;
-	position: relative;
-	left: 0%;
+button[type="submit"] {
+    margin-left: -60px;
+    border-radius: 100px;
+    color: white;
+    height: 40px;
+	width: 40px;
+    font-size: 16px;
+	font-family: 'product sans', sans-serif;
+	background-color: #232323;
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
 }
+
+

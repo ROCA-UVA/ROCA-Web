@@ -152,7 +152,7 @@ body {
 
 #left_side {
 	display: grid;
-	grid-template-rows: 5% 60% 24%; /*reduce gap between Room title and image*/
+	grid-template-rows: 7% 60% 24%;
 	grid-gap: 2%;
 }
 
@@ -338,8 +338,6 @@ th, td {
   box-sizing: border-box;
 }
 
-
-
 .fadingFeed {
 	align-content: center
 }
@@ -369,14 +367,25 @@ th, td {
 	
 }
 
-
 .button-set .btn, .button-set .button-slide-out__above {
   display: block;
 }
 
 .button-slide-out {
 	position: relative;
-	
+}
+
+.button-slide-out__above {
+  display: block;
+  min-width: 120px;
+  border: none;
+  padding: 0 1em;
+  font-size: 16px;
+  color: #000;
+  line-height: 65px;
+  text-align: center;
+  background: none;
+  transition: background .3s ease;
 }
 
 .button-slide-out__middle {
@@ -394,11 +403,11 @@ th, td {
 }
 
 .is_active .button-slide-out__above {
-  transform: translateY(-100%);
+  transform: translateY(-70%);
 }
 
 .is_active .button-slide-out__below {
-  transform: translateY(0%);
+  transform: translateY(100%);
 }
 
 .button {
@@ -747,7 +756,7 @@ input[type="text"] {
 	margin-left: 10px;
 }
 
-button[type="submit"] {
+#submitComment {
     margin-left: -60px;
     border-radius: 100px;
     color: white;

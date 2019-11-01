@@ -756,7 +756,7 @@ input[type="text"] {
 	margin-left: 10px;
 }
 
-button[type="submit"] {
+#submitComment {
     margin-left: -60px;
     border-radius: 100px;
     color: white;

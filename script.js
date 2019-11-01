@@ -113,19 +113,19 @@ function logData(id) {
 		var element = document.getElementById(id);
 		if (element.className == "pulse-side-button") {
 			if (element.style.backgroundColor == "red") {
-				console.log("["+getTime()+"] End of "+element.title);
+				console.log("["+getTime()+"] End of event: "+element.title);
 				element.setAttribute("style", "background-color: black");
 			} else {
-				console.log("["+getTime()+"] Start of "+element.title);
+				console.log("["+getTime()+"] Start of event: "+element.title);
 				element.setAttribute("style", "background-color: red");
 			}
 		} else if (element.nodeName == "INPUT") {
-			console.log("["+getTime()+"] Additional notes: "+element.value);
+			console.log("["+getTime()+"] Comment: "+element.value);
 			element.value = "";
 		} else if (element.nodeName == "A") {
 			console.log("["+getTime()+"] Activity: "+element.innerHTML);
 		} else {
-			console.log("["+getTime()+"] "+element.title);
+			console.log("["+getTime()+"] Event: "+element.title);
 		}
 	}
 }

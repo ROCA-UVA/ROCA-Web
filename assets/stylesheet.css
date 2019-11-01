@@ -115,39 +115,6 @@ body {
 	font-weight: bold
 }
 
-/* Text area where # of students is displayed */
-.increment_stud {
-	width: 30%;
-	padding-right: 1%;
-}
-
-.quadrant_inputs {
-	height: 100%;
-	width: 100%;
-	z-index: 2;
-}
-
-.inc_button {
-	width: 100%; 
-	font-size: large;
-	margin: 0;
-	padding: 0;
-}
-
-.inS_text {
-	width: 100%; 
-	margin: 0;
-	font-size: medium;
-	border: none;
-}
-
-#student_events_form {	
-	height: 100%;
-	display: none;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 50% 50%;
-}
-
 #interval_readings_form {
 	flex-grow: 1;
 	display: grid;

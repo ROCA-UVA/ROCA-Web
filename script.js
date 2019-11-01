@@ -108,9 +108,23 @@ function confirmAction(action, cancel, div_id) {
 }
 
 // Print time and action when event button is pressed
-function logData(button_id) {
-	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
-	var button_item = document.getElementById(button_id);
-	button_item.setAttribute("style", "background-color: #FF6347");
+function logData(id) {
+	if (active) {
+		var element = document.getElementById(id);
+		if (element.className == "pulse-side-button") {
+			if (element.style.backgroundColor == "red") {
+				console.log("["+getTime()+"] End of "+element.title);
+				element.setAttribute("style", "background-color: black");
+			} else {
+				console.log("["+getTime()+"] Start of "+element.title);
+				element.setAttribute("style", "background-color: red");
+			}
+		} else if (element.id == "comment") {
+			console.log("["+getTime()+"] Additional notes: "+element.value);
+			element.value = "";
+		} else {
+			console.log("["+getTime()+"] "+element.title);
+		}
+	}
 }
 

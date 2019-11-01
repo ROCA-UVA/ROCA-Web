@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `activities` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `observationID` int(11) NOT NULL,
   `acbID` int(11) NOT NULL,
   `startTime` varchar(10) CHARACTER SET latin1 NOT NULL,

@@ -152,7 +152,7 @@ body {
 
 #left_side {
 	display: grid;
-	grid-template-rows: 5% 60% 24%; /*reduce gap between Room title and image*/
+	grid-template-rows: 10% 60% 24%; /*reduce gap between Room title and image*/
 	grid-gap: 2%;
 }
 
@@ -205,7 +205,7 @@ body {
 	/* align-self: center; */
 	grid-column-gap: 0px;
 	grid-row-gap: 30px;
-	margin: 2% 8% 8% 8%;
+	margin: -5% 8% 8% 8%;
 	float: right;
 	width: 92%;
 }

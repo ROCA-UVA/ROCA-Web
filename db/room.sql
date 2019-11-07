@@ -25,17 +25,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `room'
+-- Table structure for table `rooms'
 --
 
-
-
-CREATE TABLE `room` ( `ID` INT NOT NULL AUTO_INCREMENT , `roomName` VARCHAR(50) NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+CREATE TABLE `rooms` (
+    `ID` INT NOT NULL AUTO_INCREMENT ,
+    `roomName` VARCHAR(50) NOT NULL ,
+    PRIMARY KEY (`ID`)
+    ) ENGINE = InnoDB;
+    
+    
 --
--- Dumping data for table `room`
+-- Dumping data for table `rooms`
 --
 
-INSERT INTO `room` (`ID`, `roomName`) VALUES ('1', 'MSB202'), ('2', 'PLSB310'), ('3', 'CHEM102');
+INSERT INTO `rooms` (`ID`, `roomName`) VALUES 
+    ('1', 'MSB202'),
+    ('2', 'PLSB310'),
+    ('3', 'CHEM102');
 
 -- --------------------------------------------------------
 
@@ -48,14 +55,14 @@ CREATE TABLE `room_coordinates` (
     `rID` INT NOT NULL COMMENT 'room ID' , 
     `sP` VARCHAR(5) NOT NULL COMMENT 'starting point' , 
     `eP` VARCHAR(5) NOT NULL COMMENT 'ending point' , 
-    `sID` INT NOT NULL COMMENT 'section ID' , 
+    `sectID` INT NOT NULL COMMENT 'section ID' , 
     PRIMARY KEY (`ID`)
     ) ENGINE = InnoDB;
 
 --
 -- Dumping data for table `room_coordinates`
 --
-INSERT INTO `room_coordinates` (`ID`, `rID`, `sP`, `eP`, `sID`) VALUES
+INSERT INTO `room_coordinates` (`ID`, `rID`, `sP`, `eP`, `sectID`) VALUES
  ('1', '1', '12.34', '24.29', '1'), 
  ('2', '1', '43.24', '5.983', '2'), 
  ('3', '1', '24.14', '53.25', '3'), 

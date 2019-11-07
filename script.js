@@ -2,6 +2,7 @@
 var building;
 var room_number;
 var active = false; // recording status
+var grids = [[10, 10, 80, 60], [80, 0, 130, 50], [80, 50, 130, 70], [130, 0, 190, 50], [190, 10, 260, 60]];
 
 // Return current date (month/date/year)
 function getDate() {
@@ -42,6 +43,11 @@ function initConfig() {
 	// Display corresponding classroom image
 	var image_path = "url(assets/images/".concat(building, "-", room_number, ".jpg)");
 	document.getElementById("classroom_mapping").style.backgroundImage = image_path;
+
+	// Display section grids
+	for (var i = 0; i < grids.length; i++) {
+		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i);
+	}
 }
 
 function reload() {
@@ -130,3 +136,18 @@ function logData(id) {
 	}
 }
 
+// Creates grids for classroom sections
+function createGrid(x1, y1, x2, y2, section) {
+	var frame = document.getElementById("classroom_mapping");
+	var height = y2 - y1;
+	var width = x2 - x1;
+	var new_grid = document.createElement("DIV");
+
+	new_grid.id = "section_" + section;
+	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
+	new_grid.style.border = "solid";
+	new_grid.style.height = height + "px";
+	new_grid.style.width = width + "px";
+
+	frame.appendChild(new_grid);
+}

@@ -326,6 +326,8 @@ INSERT INTO `subcategories` (`ID`, `cID`, `subcategory`) VALUES
 --
 ALTER TABLE `activities_code_bank`
   ADD PRIMARY KEY (`ID`);
+ALTER TABLE `activities_code_bank`
+  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Indexes for table `categories`
@@ -338,18 +340,26 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `dependencies`
   ADD PRIMARY KEY (`ID`);
+ALTER TABLE `dependencies`
+  ADD FOREIGN KEY (`aID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `dependencies`
+  ADD FOREIGN KEY (`eID`) REFERENCES `events_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Indexes for table `events_code_bank`
 --
 ALTER TABLE `events_code_bank`
   ADD PRIMARY KEY (`ID`);
+ALTER TABLE `events_code_bank`
+  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`ID`);
+ALTER TABLE `subcategories`
+  ADD FOREIGN KEY (`catID`) REFERENCES `categories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- AUTO_INCREMENT for dumped tables

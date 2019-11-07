@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `observer'
+-- Table structure for table `observers'
 --
 
-CREATE TABLE `observer` ( 
+CREATE TABLE `observers` ( 
     `ID` INT NOT NULL AUTO_INCREMENT ,
     `name` VARCHAR(50) NOT NULL ,
     `computingID` VARCHAR(6) NOT NULL ,
@@ -37,17 +37,19 @@ CREATE TABLE `observer` (
        
 
 --
--- Dumping data for table `observer`
+-- Dumping data for table `observers`
 --
 
-INSERT INTO `observer` (`ID`, `name`, `computingID`) VALUES ('1', 'Olivia Ryu', 'hr2ad'), ('2', 'Jenny Wang', 'jw4dk')
+INSERT INTO `observers` (`ID`, `name`, `computingID`) VALUES 
+    ('1', 'Olivia Ryu', 'hr2ad'),
+    ('2', 'Jenny Wang', 'jw4dk')
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructor`
+-- Table structure for table `instructors`
 --
 
-CREATE TABLE `instructor` ( 
+CREATE TABLE `instructors` ( 
     `ID` INT NOT NULL AUTO_INCREMENT , 
     `name` VARCHAR(50) NOT NULL ,
     `computingID` VARCHAR(6) NOT NULL ,
@@ -55,9 +57,10 @@ CREATE TABLE `instructor` (
     ) ENGINE = InnoDB;
 
 --
--- Dumping data for table `instructor`
+-- Dumping data for table `instructors`
 --
-INSERT INTO `instructor` (`ID`, `name`, `computingID`) VALUES ('1', 'Michael Redwine', 'mr7va')
+INSERT INTO `instructors` (`ID`, `name`, `computingID`) VALUES
+    ('1', 'Michael Redwine', 'mr7va')
 
 
 

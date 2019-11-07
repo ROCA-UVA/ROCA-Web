@@ -25,26 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course'
+-- Table structure for table `courses'
 --
 
-CREATE TABLE `course` ( 
+CREATE TABLE `courses` ( 
     `ID` INT NOT NULL AUTO_INCREMENT ,
-    `cName` VARCHAR(50) NOT NULL COMMENT 'courseName' ,
-    `cCode` VARCHAR(10) NOT NULL COMMENT 'courseCode' ,
-    `semyear` VARCHAR(5) NOT NULL COMMENT 'semesterYear', 
-    `sectionNum` INT NOT NULL COMMENT 'section number' , 
-    `rId` INT NOT NULL COMMENT 'room ID' , 
-    `iId` INT NOT NULL COMMENT 'instructor ID' , 
+    `cName` VARCHAR(50) NOT NULL COMMENT 'course name' ,
+    `cCode` VARCHAR(10) NOT NULL COMMENT 'course code' ,
+    `semYear` VARCHAR(5) NOT NULL COMMENT 'semester year', 
+    `sectNum` INT NOT NULL COMMENT 'section number' , 
+    `rID` INT NOT NULL COMMENT 'room ID' , 
+    `iID` INT NOT NULL COMMENT 'instructor ID' , 
     PRIMARY KEY (`ID`)
 ) ENGINE = InnoDB;
        
 
 --
--- Dumping data for table `course`
+-- Dumping data for table `courses`
 --
 
-INSERT INTO `course` (`ID`, `cName`, `cCode`, `semyear`, `sectionNum`, `rId`, `iId`) VALUES 
+INSERT INTO `courses` (`ID`, `cName`, `cCode`, `semYear`, `sectNum`, `rID`, `iID`) VALUES 
 ('1', 'Introduction to Computer Science', 'CS1110', 'F2019', '1', '1', '1');
 -- --------------------------------------------------------
 
@@ -55,8 +55,8 @@ INSERT INTO `course` (`ID`, `cName`, `cCode`, `semyear`, `sectionNum`, `rId`, `i
 
 ;
 
-ALTER TABLE `course` ADD FOREIGN KEY (`rId`) REFERENCES `room`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `course` ADD FOREIGN KEY (`iId`) REFERENCES `instructor`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `courses` ADD FOREIGN KEY (`rId`) REFERENCES `room`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `courses` ADD FOREIGN KEY (`iId`) REFERENCES `instructor`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
 

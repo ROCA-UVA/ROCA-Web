@@ -24,15 +24,12 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `activities_code_bank`
---
-
 CREATE TABLE `activities_code_bank` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `scID` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `code` varchar(20) NOT NULL
+  `code` varchar(20) NOT NULL,
+   PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56,8 +53,9 @@ INSERT INTO `activities_code_bank` (`ID`, `scID`, `name`, `code`) VALUES
 --
 
 CREATE TABLE `categories` (
-  `ID` int(11) NOT NULL,
-  `category` varchar(50) NOT NULL
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(50) NOT NULL,
+   PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -76,9 +74,10 @@ INSERT INTO `categories` (`ID`, `category`) VALUES
 --
 
 CREATE TABLE `dependencies` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `aID` int(11) NOT NULL COMMENT 'activities_code_bank ID',
-  `eID` int(11) NOT NULL COMMENT 'events_code_bank ID'
+  `eID` int(11) NOT NULL COMMENT 'events_code_bank ID',
+   PRIMARY KEY(`ID`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -251,10 +250,11 @@ INSERT INTO `dependencies` (`ID`, `aID`, `eID`) VALUES
 --
 
 CREATE TABLE `events_code_bank` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `scID` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `code` varchar(20) NOT NULL
+  `code` varchar(20) NOT NULL,
+   PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -299,16 +299,17 @@ INSERT INTO `events_code_bank` (`ID`, `scID`, `name`, `code`) VALUES
 --
 
 CREATE TABLE `subcategories` (
-  `ID` int(11) NOT NULL,
-  `cID` int(11) NOT NULL,
-  `subcategory` varchar(50) NOT NULL
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `catID` int(11) NOT NULL COMMENT 'category ID',
+  `subcategory` varchar(50) NOT NULL,
+   PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subcategories`
 --
 
-INSERT INTO `subcategories` (`ID`, `cID`, `subcategory`) VALUES
+INSERT INTO `subcategories` (`ID`, `catID`, `subcategory`) VALUES
 (1, 1, 'Instructor Activity'),
 (2, 1, 'Student Activity'),
 (3, 2, 'Instructor Event'),
@@ -317,83 +318,39 @@ INSERT INTO `subcategories` (`ID`, `cID`, `subcategory`) VALUES
 (6, 3, 'Student Event'),
 (7, 3, 'Technology');
 
+-- --------------------------------------------------------
+
 --
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `activities_code_bank`
---
-ALTER TABLE `activities_code_bank`
-  ADD PRIMARY KEY (`ID`);
-ALTER TABLE `activities_code_bank`
-  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `dependencies`
---
-ALTER TABLE `dependencies`
-  ADD PRIMARY KEY (`ID`);
-ALTER TABLE `dependencies`
-  ADD FOREIGN KEY (`aID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `dependencies`
-  ADD FOREIGN KEY (`eID`) REFERENCES `events_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Indexes for table `events_code_bank`
---
-ALTER TABLE `events_code_bank`
-  ADD PRIMARY KEY (`ID`);
-ALTER TABLE `events_code_bank`
-  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  ADD PRIMARY KEY (`ID`);
-ALTER TABLE `subcategories`
   ADD FOREIGN KEY (`catID`) REFERENCES `categories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
+  
 --
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `activities_code_bank`
+-- Indexes for table `activities_code_bank`
 --
 ALTER TABLE `activities_code_bank`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  
 --
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `dependencies`
---
-ALTER TABLE `dependencies`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
-
---
--- AUTO_INCREMENT for table `events_code_bank`
+-- Indexes for table `events_code_bank`
 --
 ALTER TABLE `events_code_bank`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  ADD FOREIGN KEY (`scID`) REFERENCES `subcategories`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  
+--
+-- Indexes for table `dependencies`
+--
+ALTER TABLE `dependencies`
+  ADD FOREIGN KEY (`aID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `dependencies`
+  ADD FOREIGN KEY (`eID`) REFERENCES `events_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
---
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

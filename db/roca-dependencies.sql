@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `activities_code_bank` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `scID` int(11) NOT NULL,
+  `scID` int(11) NOT NULL COMMENT 'subcategory ID',
   `name` varchar(50) NOT NULL,
   `code` varchar(20) NOT NULL,
    PRIMARY KEY(`ID`)
@@ -251,7 +251,7 @@ INSERT INTO `dependencies` (`ID`, `aID`, `eID`) VALUES
 
 CREATE TABLE `events_code_bank` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `scID` int(11) NOT NULL,
+  `scID` int(11) NOT NULL COMMENT 'subcategory ID',
   `name` varchar(50) NOT NULL,
   `code` varchar(20) NOT NULL,
    PRIMARY KEY(`ID`)

@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `collected_activities` (
   `aID` int(11) NOT NULL COMMENT 'activity ID',
   `sT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'start time',
   `eT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'end time',
-   PRIMARY KEY(`id`)
+   PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --

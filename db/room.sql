@@ -77,7 +77,7 @@ INSERT INTO `room_coordinates` (`ID`, `rID`, `sP`, `eP`, `sectID`) VALUES
 -- Indexes for table `room_coordinates`
 --
 ALTER TABLE `room_coordinates` 
-ADD FOREIGN KEY (`rID`) REFERENCES `room`(`ID`) 
+ADD FOREIGN KEY (`rID`) REFERENCES `rooms`(`ID`) 
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 

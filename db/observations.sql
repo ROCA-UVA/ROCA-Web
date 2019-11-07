@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `observations` (
-  `id` int(11) NOT NULL,
-  `oID` int(11) NOT NULL,
-  `cID` int(11) NOT NULL,
-  `startTime` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `endTime` varchar(10) CHARACTER SET latin1 NOT NULL
+  `ID` int(11) NOT NULL,
+  `obsID` int(11) NOT NULL COMMENT 'observer ID',
+  `cID` int(11) NOT NULL COMMENT 'course ID',
+  `sT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'start time',
+  `eT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'end time'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -42,10 +42,10 @@ CREATE TABLE IF NOT EXISTS `observations` (
 -- Indexes for table `observations`
 --
 ALTER TABLE `observations`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`ID`);
   
-ALTER TABLE `observations` ADD FOREIGN KEY (`oID`) REFERENCES `observer`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `observations` ADD FOREIGN KEY (`cID`) REFERENCES `course`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `observations` ADD FOREIGN KEY (`obsID`) REFERENCES `observers`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `observations` ADD FOREIGN KEY (`cID`) REFERENCES `courses`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

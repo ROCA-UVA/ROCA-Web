@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `observers` ( 
     `ID` INT NOT NULL AUTO_INCREMENT ,
     `name` VARCHAR(50) NOT NULL ,
-    `computingID` VARCHAR(6) NOT NULL ,
+    `compID` VARCHAR(6) NOT NULL COMMENT 'computing ID',
     PRIMARY KEY (`ID`)
 ) ENGINE = InnoDB;
        
@@ -40,7 +40,7 @@ CREATE TABLE `observers` (
 -- Dumping data for table `observers`
 --
 
-INSERT INTO `observers` (`ID`, `name`, `computingID`) VALUES 
+INSERT INTO `observers` (`ID`, `name`, `compID`) VALUES 
     ('1', 'Olivia Ryu', 'hr2ad'),
     ('2', 'Jenny Wang', 'jw4dk')
 -- --------------------------------------------------------
@@ -52,14 +52,14 @@ INSERT INTO `observers` (`ID`, `name`, `computingID`) VALUES
 CREATE TABLE `instructors` ( 
     `ID` INT NOT NULL AUTO_INCREMENT , 
     `name` VARCHAR(50) NOT NULL ,
-    `computingID` VARCHAR(6) NOT NULL ,
+    `compID` VARCHAR(6) NOT NULL COMMENT 'computing ID',
     PRIMARY KEY (`ID`)
     ) ENGINE = InnoDB;
 
 --
 -- Dumping data for table `instructors`
 --
-INSERT INTO `instructors` (`ID`, `name`, `computingID`) VALUES
+INSERT INTO `instructors` (`ID`, `name`, `compID`) VALUES
     ('1', 'Michael Redwine', 'mr7va')
 
 

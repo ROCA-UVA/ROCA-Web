@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `observers'
 --
@@ -42,7 +41,7 @@ CREATE TABLE `observers` (
 
 INSERT INTO `observers` (`ID`, `name`, `compID`) VALUES 
     ('1', 'Olivia Ryu', 'hr2ad'),
-    ('2', 'Jenny Wang', 'jw4dk')
+    ('2', 'Jenny Wang', 'jw4dk');
 -- --------------------------------------------------------
 
 --
@@ -60,8 +59,7 @@ CREATE TABLE `instructors` (
 -- Dumping data for table `instructors`
 --
 INSERT INTO `instructors` (`ID`, `name`, `compID`) VALUES
-    ('1', 'Michael Redwine', 'mr7va')
-
+    ('1', 'Michael Redwine', 'mr7va');
 
 
 COMMIT;

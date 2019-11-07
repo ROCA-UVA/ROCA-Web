@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `rooms` (
     `ID` INT NOT NULL AUTO_INCREMENT ,
-    `roomName` VARCHAR(50) NOT NULL ,
+    `rName` VARCHAR(50) NOT NULL COMMENT 'room name',
     PRIMARY KEY (`ID`)
     ) ENGINE = InnoDB;
     
@@ -39,7 +39,7 @@ CREATE TABLE `rooms` (
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`ID`, `roomName`) VALUES 
+INSERT INTO `rooms` (`ID`, `rName`) VALUES 
     ('1', 'MSB202'),
     ('2', 'PLSB310'),
     ('3', 'CHEM102');

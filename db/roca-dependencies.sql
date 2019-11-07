@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `activities_code_bank` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `scID` int(11) NOT NULL COMMENT 'subcategory ID',
-  `name` varchar(50) NOT NULL,
+  `activity` varchar(50) NOT NULL,
   `code` varchar(20) NOT NULL,
    PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -36,7 +36,7 @@ CREATE TABLE `activities_code_bank` (
 -- Dumping data for table `activities_code_bank`
 --
 
-INSERT INTO `activities_code_bank` (`ID`, `scID`, `name`, `code`) VALUES
+INSERT INTO `activities_code_bank` (`ID`, `scID`, `activity`, `code`) VALUES
 (1, 1, 'Lecturing', 'Lec'),
 (2, 1, 'Group Discussion', 'Grp Disc'),
 (3, 1, 'Administrative Task', 'Admin'),
@@ -75,8 +75,8 @@ INSERT INTO `categories` (`ID`, `category`) VALUES
 
 CREATE TABLE `dependencies` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `aID` int(11) NOT NULL COMMENT 'activities_code_bank ID',
-  `eID` int(11) NOT NULL COMMENT 'events_code_bank ID',
+  `aID` int(11) NOT NULL COMMENT 'activity ID',
+  `eID` int(11) NOT NULL COMMENT 'event ID',
    PRIMARY KEY(`ID`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -252,7 +252,7 @@ INSERT INTO `dependencies` (`ID`, `aID`, `eID`) VALUES
 CREATE TABLE `events_code_bank` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `scID` int(11) NOT NULL COMMENT 'subcategory ID',
-  `name` varchar(50) NOT NULL,
+  `event` varchar(50) NOT NULL,
   `code` varchar(20) NOT NULL,
    PRIMARY KEY(`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -261,7 +261,7 @@ CREATE TABLE `events_code_bank` (
 -- Dumping data for table `events_code_bank`
 --
 
-INSERT INTO `events_code_bank` (`ID`, `scID`, `name`, `code`) VALUES
+INSERT INTO `events_code_bank` (`ID`, `scID`, `event`, `code`) VALUES
 (1, 3, 'Poses Question', 'Pose Q'),
 (2, 3, 'Comprehension Question', 'Comp Q'),
 (3, 3, 'Rhetorical Question', 'Rhetoric Q'),

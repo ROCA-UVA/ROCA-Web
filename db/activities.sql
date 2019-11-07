@@ -23,15 +23,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activities`
+-- Table structure for table `collected_activities`
 --
 
-CREATE TABLE IF NOT EXISTS `activities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `observationID` int(11) NOT NULL,
-  `acbID` int(11) NOT NULL,
-  `startTime` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `endTime` varchar(10) CHARACTER SET latin1 NOT NULL,
+CREATE TABLE IF NOT EXISTS `collected_activities` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `oID` int(11) NOT NULL COMMENT 'observation ID',
+  `aID` int(11) NOT NULL COMMENT 'activity ID',
+  `sT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'start time',
+  `eT` varchar(10) CHARACTER SET latin1 NOT NULL COMMENT 'end time',
    PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -40,12 +40,12 @@ CREATE TABLE IF NOT EXISTS `activities` (
 --
 
 --
--- Indexes for table `activities`
+-- Indexes for table `collected_activities`
 --
-ALTER TABLE `activities`
-  ADD FOREIGN KEY (`acbID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `activities`
-  ADD FOREIGN KEY (`observationID`) REFERENCES `observations`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `collected_activities`
+  ADD FOREIGN KEY (`aID`) REFERENCES `activities_code_bank`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `collected_activities`
+  ADD FOREIGN KEY (`oID`) REFERENCES `observations`(`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
    
  COMMIT;
  

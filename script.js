@@ -132,4 +132,3 @@ function logData(id) {
 		}
 	}
 }
-

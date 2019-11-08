@@ -14,7 +14,7 @@ body {
 	height: 50%;
 	flex-grow: 1;
 	font-family: product sans, sans-serif;
-	padding: 1%;
+	padding: 0.5%;
 	margin: 0;
 }
 
@@ -152,7 +152,7 @@ body {
 
 #left_side {
 	display: grid;
-	grid-template-rows: 10% 60% 24%;
+	grid-template-rows: 7% 60% 24%;
 	grid-gap: 2%;
 }
 
@@ -218,7 +218,6 @@ body {
 
 .checkbox-grid {
 	grid-template-columns: 50% 25%;
-	padding-left: 25%;
 	padding-top: 5%;	
 }
 
@@ -321,9 +320,9 @@ body {
 
 .subheader {
 	font-weight: bold;
-	font-size: large;
-	color: #000000;
-	text-align: center;
+	font-size: 16px;
+	color: #4390C1;
+
 }
 
 #dump_data_frame {
@@ -337,19 +336,6 @@ th, td {
 
 * {
   box-sizing: border-box;
-}
-
-.button-slide-out__above {
-  display: block;
-  min-width: 120px;
-  border: none;
-  padding: 0 1em;
-  font-size: 16px;
-  color: #000;
-  line-height: 65px;
-  text-align: center;
-  background: none;
-  transition: background .3s ease;
 }
 
 .fadingFeed {
@@ -381,14 +367,25 @@ th, td {
 	
 }
 
-
 .button-set .btn, .button-set .button-slide-out__above {
   display: block;
 }
 
 .button-slide-out {
 	position: relative;
-	
+}
+
+.button-slide-out__above {
+  display: block;
+  min-width: 120px;
+  border: none;
+  padding: 0 1em;
+  font-size: 16px;
+  color: #000;
+  line-height: 65px;
+  text-align: center;
+  background: none;
+  transition: background .3s ease;
 }
 
 .button-slide-out__middle {
@@ -660,23 +657,25 @@ button:focus {
     -webkit-transition:.5s;
     transition:.5s;
 	width: auto;
-	padding-right: 15px;
 	padding-left: 15px;
-	font-size: small;
+	padding-right: 15px;
+	font-size: 11px;
 	font-family: 'product sans', sans-serif;
 	color: #ffffff;
 	background-color: #232323;
     cursor: pointer;
     margin: 5px;
-	height: 30px;
+	height: 25px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
 	border-radius: 100px;
 	box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
-	-webkit-animation: pulse 1.8s infinite;
-	display: block;
+
   }
+
+.pulse-side-button:hover{
+  -webkit-animation: pulse 1.8s infinite;
 
   @-webkit-keyframes pulse {
 	0% {
@@ -700,6 +699,7 @@ button:focus {
 	  box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
 	}
   }
+ }
 
 .circular-side-button {
 	-o-transition:.5s;
@@ -710,13 +710,13 @@ button:focus {
 	width: auto;
 	padding-right: 15px;
 	padding-left: 15px;
-	font-size: small;
+	font-size: 11px;
 	font-family: 'product sans', sans-serif;
 	color: #ffffff;
 	background-color: #232323;
 	cursor: pointer;
 	margin: 5px;
-	height: 30px;
+	height: 25px;
 	text-align:center;
 	border: none;
 	background-size: 300% 100%;
@@ -727,4 +727,49 @@ button:focus {
 .circular-side-button:focus {
 	background-color: gray;
 }
+
+
+/* play button, reset button, comments section */
+.bottom-row {
+	float: left;
+	max-width: 1000px;
+  }
+
+/* play button */
+.play-reset-btn {
+	float: left;
+	max-width: 300px;
+}
+
+input[type="text"] {
+    padding: 1%;
+    height: 55px;
+	display: inline-block;
+	width: 280px;
+	resize: none;
+	border-radius: 100px;
+	box-shadow:0 1px 2px #aaa;
+	border: 0;
+	outline: none !important;
+	text-indent: 10px;
+	margin: 5px;
+	margin-left: 10px;
+}
+
+#submitComment {
+    margin-left: -60px;
+    border-radius: 100px;
+    color: white;
+    height: 40px;
+	width: 40px;
+    font-size: 16px;
+	font-family: 'product sans', sans-serif;
+	background-color: #232323;
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+}
+
 

@@ -37,11 +37,6 @@ body {
     display: block;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
 .dropdown .dropdown-menu {
     position: absolute;
     top: 104%;
@@ -78,7 +73,7 @@ body {
 	background-size: 300% 100%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 	border-radius: 20px;
-	margin-bottom: 0%;
+	margin-top: 60px;
 }
 
 /** List Item Styles **/
@@ -148,6 +143,8 @@ body {
 	grid-template-rows: repeat(10, 10%);
 	grid-template-columns: repeat(30, 1fr);
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	max-width: 900px;
+	min-width: 900px;
 }
 
 #left_side {
@@ -214,6 +211,7 @@ body {
 	flex-grow: 1;
 	display: grid;
 	height: 90%;	
+	margin-top: 5%;
 }
 
 .checkbox-grid {
@@ -724,11 +722,6 @@ button:focus {
 	border-radius: 100px;
 }
 
-.circular-side-button:focus {
-	background-color: gray;
-}
-
-
 /* play button, reset button, comments section */
 .bottom-row {
 	float: left;
@@ -771,5 +764,4 @@ input[type="text"] {
 	-webkit-transition:.5s;
 	transition:.5s;
 }
-
 

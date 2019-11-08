@@ -116,6 +116,7 @@ function logData(id) {
 				console.log("["+getTime()+"] End of event: "+element.title);
 				element.setAttribute("style", "background-color: black");
 			} else {
+				var css = 'pulse-side-button:hover{ @-webkit-keyframes pulse{-ms-transform: scale(0.9), -moz-transform: scale(0.9), -webkit-transform: scale(0.9), transform: scale(0.9), box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5)}';
 				console.log("["+getTime()+"] Start of event: "+element.title);
 				element.setAttribute("style", "background-color: red");
 			}

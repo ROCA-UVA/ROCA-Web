@@ -69,6 +69,7 @@ function start() {
 	console.log("Observation started on "+getDate()+" at "+getTime());
 }
 
+
 // Stop recording
 function stop() {
 	active = false;
@@ -107,6 +108,28 @@ function confirmAction(action, cancel, div_id) {
 }
 
 // Print time and action when event button is pressed
-function logData(button_id) {
-	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
+function logData(id) {
+	if (active) {
+		var element = document.getElementById(id);
+        if (element.className == "pulse-side-button") {
+            //Event is currently active and button has been pressed to end the event
+			if (element.style.backgroundColor == "red") {
+				console.log("["+getTime()+"] End of event: "+element.title);
+				element.setAttribute("style", "background-color: black");
+            }
+            //button is pressed to start event
+            else {
+				console.log("["+getTime()+"] Start of event: "+element.title);
+				element.setAttribute("style", "background-color: red");
+			}
+		} else if (element.nodeName == "INPUT") {
+			console.log("["+getTime()+"] Comment: "+element.value);
+			element.value = "";
+		} else if (element.nodeName == "A") {
+			console.log("["+getTime()+"] Activity: "+element.innerHTML);
+		} else {
+			console.log("["+getTime()+"] Event: "+element.title);
+		}
+	}
 }
+

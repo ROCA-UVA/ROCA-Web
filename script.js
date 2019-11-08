@@ -3,6 +3,7 @@ var building;
 var room_number;
 var active = false; // recording status
 var grids = [[10, 10, 80, 60], [80, 0, 130, 50], [80, 50, 130, 70], [130, 0, 190, 50], [190, 10, 260, 60]];
+var section_count = [];
 
 // Return current date (month/date/year)
 function getDate() {
@@ -46,7 +47,8 @@ function initConfig() {
 
 	// Display section grids
 	for (var i = 0; i < grids.length; i++) {
-		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i);
+		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i+1);
+		section_count.push(0);
 	}
 }
 
@@ -149,5 +151,31 @@ function createGrid(x1, y1, x2, y2, section) {
 	new_grid.style.height = height + "px";
 	new_grid.style.width = width + "px";
 
+	new_grid.onclick = function() {displaySection(section)};
+
 	frame.appendChild(new_grid);
+}
+
+// Display corresponding classroom section
+function displaySection(section) {
+	input = document.getElementById("section_input");
+	id = document.getElementById("section_id");
+	students = document.getElementById("section_students");
+	if (input.style.display == "none" || id.innerHTML.substring(9) != section) {
+		input.style.display = "block";
+		id.innerHTML = "Section: " + section;
+		students.innerHTML = section_count[section-1];
+	} else if (id.innerHTML.substring(9) == section) {
+		input.style.display = "none";
+	}
+}
+
+// Update student count total
+function updateCount(num) {
+	section = document.getElementById("section_id").innerHTML.substring(9);
+	students = document.getElementById("section_students");
+
+	count = section_count[section-1] += num;
+	students.innerHTML = count;
+	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }

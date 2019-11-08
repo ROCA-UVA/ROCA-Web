@@ -174,8 +174,8 @@ function displaySection(section) {
 function updateCount(num) {
 	section = document.getElementById("section_id").innerHTML.substring(9);
 	students = document.getElementById("section_students");
-
-	count = section_count[section-1] += num;
+	
+	count = section_count[section-1] += num;	
 	students.innerHTML = count;
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }

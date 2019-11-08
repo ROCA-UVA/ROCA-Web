@@ -9,7 +9,7 @@ html {
 	background: #f2f2f2;
 	margin: 0;	
 }
- 
+  
 body {
 	height: 50%;
 	flex-grow: 1;
@@ -24,18 +24,16 @@ body {
 }
 
 .dropdown:hover .dropdown-menu {
-
-    /** Show dropdown menu */
     display: block;
 }
 
 .dropdown .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 104%;
     display: none;
     margin: 0;
     list-style: none; /** Remove list bullets */
-    width: 100%; /** Set the width to 100% of it's parent */
+    width: 136px; /** Set the width to 100% of it's parent */
     padding: 0;
 }
 
@@ -46,13 +44,13 @@ body {
 	-moz-transition:.5s;
 	-webkit-transition:.5s;
 	transition:.5s;
-	width: auto;
+	width: 136px;
 	padding-right: 15px;
 	padding-left: 15px;
 	font-size: small;
 	font-family: 'product sans', sans-serif;
-	color: #ffffff;
-	background-color: #232323;
+	color: #ffff;
+	background-color: #3B769C;
 	cursor: pointer;
 	margin: 5px;
 	height: 40px;
@@ -60,12 +58,13 @@ body {
 	border: none;
 	background-size: 300% 100%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	border-radius: 100px;
-	margin-bottom: 15%;
+	border-radius: 20px;
+	margin-top: 60px;
+	margin-bottom: -3px;
 }
 
 /** List Item Styles **/
-.dropdown a {
+.dropdown li {
     display: block;
     padding: 0.2em 0.8em;
     text-decoration: none;
@@ -74,10 +73,40 @@ body {
 }
 
 /** List Item Hover Styles **/
-.dropdown a:hover {
+.dropdown li:hover {
     background: #4390C1;
     color: white;
     border-radius: 5px;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);	
+}
+
+
+.dropdown-content li {
+	cursor: pointer;
+	-o-transition:.25s;
+    -ms-transition:.25s;
+    -moz-transition:.25s;
+    -webkit-transition:.25s;
+    transition:.25s;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+	display: block;
+	font-family: product sans bold, sans-serif;
+	border-radius: 15px;
+	-o-transition:.35s;
+    -ms-transition:.35s;
+    -moz-transition:.35s;
+    -webkit-transition:.35s;
+    transition:.35s;
 }
 
 #timer {
@@ -101,6 +130,8 @@ body {
 	grid-template-rows: repeat(10, 10%);
 	grid-template-columns: repeat(30, 1fr);
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
+	max-width: 1000px;
+	min-width: 1000px;
 }
 
 #left_side {
@@ -119,6 +150,7 @@ body {
 	flex-grow: 1;
 	display: grid;
 	height: 90%;	
+	margin-top: 5%;
 }
 
 .checkbox-grid {
@@ -357,11 +389,6 @@ button:focus {
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 	border-radius: 100px;
 }
-
-.circular-side-button:focus {
-	background-color: gray;
-}
-
 
 /* play button, reset button, comments section */
 .bottom-row {

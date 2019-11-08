@@ -478,9 +478,17 @@ button:focus {
 }
 
 .circular-side-button:focus {
-	background-color: gray;
+	animation-name: color_change;
+	animation-duration: .5s;
+	animation-iteration-count: 1.5;
+	animation-direction: alternate;
 }
+@-webkit-keyframes color_change {
+	0% { background-color: black; }
+	100% { background-color: gray; }
 
+
+}
 
 /* play button, reset button, comments section */
 .bottom-row {

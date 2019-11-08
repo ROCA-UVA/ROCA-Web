@@ -77,7 +77,19 @@ function stop() {
 	// Submit observation log to a form
 	var log = document.getElementById("fullData");
 	log.disabled = false;
-	document.getElementById("finalSubmit").submit();
+    document.getElementById("finalSubmit").submit();
+
+    //save console to json and send to PHP
+    //console.save = function (data, filename) {
+    //    if (!data) {
+    //        console.error('Console.save: No data')
+    //        return;
+    //    }
+    //    if (!filename) filename = 'console.json'
+    //    if (typeof data) {
+
+    //    }
+    //}
 }
 
 // Display cancel button and action button

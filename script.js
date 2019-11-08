@@ -2,6 +2,8 @@
 var building;
 var room_number;
 var active = false; // recording status
+var grids = [[10, 10, 80, 60], [80, 0, 130, 50], [80, 50, 130, 70], [130, 0, 190, 50], [190, 10, 260, 60]];
+var section_count = [];
 
 // Return current date (month/date/year)
 function getDate() {
@@ -42,6 +44,12 @@ function initConfig() {
 	// Display corresponding classroom image
 	var image_path = "url(assets/images/".concat(building, "-", room_number, ".jpg)");
 	document.getElementById("classroom_mapping").style.backgroundImage = image_path;
+
+	// Display section grids
+	for (var i = 0; i < grids.length; i++) {
+		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i+1);
+		section_count.push(0);
+	}
 }
 
 function reload() {
@@ -108,9 +116,66 @@ function confirmAction(action, cancel, div_id) {
 }
 
 // Print time and action when event button is pressed
-function logData(button_id) {
-	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
-	var button_item = document.getElementById(button_id);
-	button_item.setAttribute("style", "background-color: #FF6347");
+function logData(id) {
+	if (active) {
+		var element = document.getElementById(id);
+		if (element.className == "pulse-side-button") {
+			if (element.style.backgroundColor == "red") {
+				console.log("["+getTime()+"] End of event: "+element.title);
+				element.setAttribute("style", "background-color: black");
+			} else {
+				console.log("["+getTime()+"] Start of event: "+element.title);
+				element.setAttribute("style", "background-color: red");
+			}
+		} else if (element.nodeName == "INPUT") {
+			console.log("["+getTime()+"] Comment: "+element.value);
+			element.value = "";
+		} else if (element.nodeName == "A") {
+			console.log("["+getTime()+"] Activity: "+element.innerHTML);
+		} else {
+			console.log("["+getTime()+"] Event: "+element.title);
+		}
+	}
 }
 
+// Creates grids for classroom sections
+function createGrid(x1, y1, x2, y2, section) {
+	var frame = document.getElementById("classroom_mapping");
+	var height = y2 - y1;
+	var width = x2 - x1;
+	var new_grid = document.createElement("DIV");
+
+	new_grid.id = "section_" + section;
+	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
+	new_grid.style.border = "solid";
+	new_grid.style.height = height + "px";
+	new_grid.style.width = width + "px";
+
+	new_grid.onclick = function() {displaySection(section)};
+
+	frame.appendChild(new_grid);
+}
+
+// Display corresponding classroom section
+function displaySection(section) {
+	input = document.getElementById("section_input");
+	id = document.getElementById("section_id");
+	students = document.getElementById("section_students");
+	if (input.style.display == "none" || id.innerHTML.substring(9) != section) {
+		input.style.display = "block";
+		id.innerHTML = "Section: " + section;
+		students.innerHTML = section_count[section-1];
+	} else if (id.innerHTML.substring(9) == section) {
+		input.style.display = "none";
+	}
+}
+
+// Update student count total
+function updateCount(num) {
+	section = document.getElementById("section_id").innerHTML.substring(9);
+	students = document.getElementById("section_students");
+
+	count = section_count[section-1] += num;
+	students.innerHTML = count;
+	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
+}

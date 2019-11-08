@@ -50,16 +50,36 @@
 			</div>
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
-			<div id="classroom_mapping"></div>
+			<div id="classroom_mapping">
+				<div id="section_input" style="display: none">
+					<table style="width:auto; height:auto; background-color: white">
+					<caption id="section_id" style="font-size: 40%; padding-top: 2%; background-color: white">Section</caption>
+					<tr>
+						<td rowspan="3"><span class='ti-user' style='vertical-align: -2px; font-size: 50%;'></span></td>
+						<td><button class="circularButton2" title="Increment Students" type="button" id="more_students" onclick="updateCount(1)" style="font-weight: bold; font-size: 70%;">+</button></td>
+						<td rowspan="3">
+							<button class="button2 code" title="Asks Question" id="sq_button" style="width:100%" onclick="logData('sq_button')">Asks Question</button> 
+							<button class="button2 code" title="Responds to Instructor" id="sri_button" style="width:100%" onclick="logData('sri_button')">Responds to Instructor</button>
+							<button class="button2 code" title="Makes a Prediction" id="sp_button" style="width:100%" onclick="logData('sp_button')">Makes a Prediction</button>
+							<button class="button2 code" title="Responds to Student" id="srs_button" style="width:100%" onclick="logData('srs_button')">Responds to Student</button>
+						</td>
+					</tr>
+					<tr>
+						<td id="section_students" style="font-size: small;">0</td>
+					</tr>
+					<tr>
+						<td><button class="circularButton2" title="Decrement Students" type="button" id="less_students" onclick="updateCount(-1)" style="font-weight: bold; font-size: 70%;">-</button></td>
+					</tr>
+					</table>
+				</div>
+			</div>
 
 			<div class="bottom-row">
 				<div id="bottom_left">		
 					<div class="play-reset-btn">
 						<div class="pen-wrapper" style="display: inline-block">
 							<div class="buton-cover button-slide-out" id="active_div">
-								<div class="button-slide-out__above">
-									<button class="btn" id="initiallyCancel" onclick="reload()">Stop</button>
-								</div>
+								<span class="button-slide-out__above" style="text-align: center" id="areYouSure">are you sure?</span>
 
 								<div class="button-slide-out__middle">
 									<button class="btn" id="start_button" onclick="start()" style="-webkit-animation: pulse 1.8s infinite" title="Start">
@@ -76,9 +96,7 @@
 						<div class="pen-wrapper" style="display: inline-block">
 
 							<div class="buton-cover button-slide-out" id="reset_div">
-								<div class="button-slide-out__above">
-										<button class="btn" id="initiallyReset" onclick="reload()">Reset</button>
-								</div>	
+								<span class="button-slide-out__above" style="text-align: center">are you sure?</span>
 
 								<div class="button-slide-out__middle">
 									<button class="btn" id="reset_button" onclick="confirmAction('reset_button', 'cancelReset', 'reset_div')" title="Reset">
@@ -94,10 +112,10 @@
 						</div>
 					</div>
 
-					<div class='comment_box'>
-						<!-- comments text area -->	
-						<input placeholder='Enter Comment' type="text">
-						<button type="submit">
+					<!-- BEGIN: comment box div -->	
+					<div class="comment_box">
+						<input type="text" id="comment" placeholder="Enter Comment" autocomplete="off">
+						<button id="submitComment" onclick="logData('comment')">
 							<span class="ti-pencil"></span>
 						</button>
 					</div>
@@ -115,11 +133,11 @@
 			    <button>Instructor Activity</button>
 			    <!-- dropdown menu -->
 			    <ul class="dropdown-menu">
-			        <li><a href="#">Lecturing</a></li>
-			        <li><a href="#">Group Discussion</a></li>
-			        <li><a href="#">Administrative Task</a></li>
-			        <li><a href="#">Media</a></li>
-			        <li><a href="#">Idle</a></li>
+			        <li><a id="lecturing" onclick="logData('lecturing')">Lecturing</a></li>
+			        <li><a id="group_discussion" onclick="logData('group_discussion')">Group Discussion</a></li>
+			        <li><a id="admin_task" onclick="logData('admin_task')">Administrative Task</a></li>
+			        <li><a id="media" onclick="logData('media')">Media</a></li>
+			        <li><a id="idle" onclick="logData('idle')">Idle</a></li>
 			    </ul>
 			</div>
 			<div class="dropdown">
@@ -127,9 +145,9 @@
 			    <button>Student Activity</button>
 			    <!-- dropdown menu -->
 			    <ul class="dropdown-menu">
-			        <li><a href="#">Group Work</a></li>
-			        <li><a href="#">Individual Work</a></li>
-			        <li><a href="#">Presentation</a></li>
+			        <li><a id="group_work" onclick="logData('group_work')">Group Work</a></li>
+			        <li></li><a id="ind_work" onclick="logData('ind_work')">Individual Work</a></li>
+			        <li><a id="presentation" onclick="logData('presentation')">Presentation</a></li>
 			    </ul>
 			</div>
 

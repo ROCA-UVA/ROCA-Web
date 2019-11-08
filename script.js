@@ -115,12 +115,14 @@ function logData(id) {
             //Event is currently active and button has been pressed to end the event
 			if (element.style.backgroundColor == "red") {
 				console.log("["+getTime()+"] End of event: "+element.title);
-				element.setAttribute("style", "background-color: black");
+                element.setAttribute("style", "background-color: black");
+                //element.setAttribute("style", "border-color: black");
             }
             //button is pressed to start event
             else {
 				console.log("["+getTime()+"] Start of event: "+element.title);
-				element.setAttribute("style", "background-color: red");
+                element.setAttribute("style", "background-color: red");
+                //element.setAttribute("style", "border-color: #008000");
 			}
 		} else if (element.nodeName == "INPUT") {
 			console.log("["+getTime()+"] Comment: "+element.value);

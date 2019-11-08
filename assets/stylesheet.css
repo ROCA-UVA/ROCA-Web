@@ -24,8 +24,6 @@ body {
 }
 
 .dropdown:hover .dropdown-menu {
-
-    /** Show dropdown menu */
     display: block;
 }
 
@@ -62,6 +60,7 @@ body {
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 	border-radius: 20px;
 	margin-top: 60px;
+	margin-bottom: -3px;
 }
 
 /** List Item Styles **/
@@ -131,8 +130,8 @@ body {
 	grid-template-rows: repeat(10, 10%);
 	grid-template-columns: repeat(30, 1fr);
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	max-width: 900px;
-	min-width: 900px;
+	max-width: 1000px;
+	min-width: 1000px;
 }
 
 #left_side {

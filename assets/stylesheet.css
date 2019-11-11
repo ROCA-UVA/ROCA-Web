@@ -35,7 +35,7 @@ body {
     display: none;
     margin: 0;
     list-style: none; /** Remove list bullets */
-    width: 100%; /** Set the width to 100% of it's parent */
+    width: 136px; /** Set the width to 100% of it's parent */
     padding: 0;
 }
 
@@ -46,13 +46,13 @@ body {
 	-moz-transition:.5s;
 	-webkit-transition:.5s;
 	transition:.5s;
-	width: auto;
+	width: 136px;
 	padding-right: 15px;
 	padding-left: 15px;
 	font-size: small;
 	font-family: 'product sans', sans-serif;
-	color: #ffffff;
-	background-color: #232323;
+	color: #ffff;
+	background-color: #3B769C;
 	cursor: pointer;
 	margin: 5px;
 	height: 40px;
@@ -60,8 +60,9 @@ body {
 	border: none;
 	background-size: 300% 100%;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	border-radius: 100px;
-	margin-bottom: 15%;
+	border-radius: 20px;
+	margin-top: 60px;
+	margin-bottom: -3px;
 }
 
 /** List Item Styles **/
@@ -251,7 +252,7 @@ body {
 	font-weight: bold;
 	font-size: 16px;
 	color: #4390C1;
-
+	margin-top: 30px;
 }
 
 #dump_data_frame {
@@ -424,11 +425,12 @@ button:focus {
     background-size: 300% 100%;
 	border-radius: 100px;
 	box-shadow: 0 0 0 0 rgba(0, 158, 50, 0.5);
-
+	-webkit-backface-visibility: hidden;
   }
 
 .pulse-side-button:hover{
   -webkit-animation: pulse 1.8s infinite;
+  -webkit-backface-visibility: hidden;
 
   @-webkit-keyframes pulse {
 	0% {

@@ -521,3 +521,10 @@ input[type="text"] {
 	-webkit-transition:.5s;
 	transition:.5s;
 }
+
+table{
+	width:auto; 
+	height:auto; 
+	background-color: #fff;
+	display: relative;
+}

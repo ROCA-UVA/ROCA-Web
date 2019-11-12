@@ -104,15 +104,6 @@ body {
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 }
 
-#section_input {
-	position: absolute;
-	z-index: 2;
-	display: none;
-	width:150px;
-	height:auto;
-	background-color: white;
-}
-
 #left_side {
 	display: grid;
 

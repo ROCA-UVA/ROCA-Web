@@ -148,8 +148,8 @@ function createGrid(x1, y1, x2, y2, section) {
 	new_grid.id = "section_" + section;
 	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
 	new_grid.style.border = "solid";
-	new_grid.style.height = height + "px";
-	new_grid.style.width = width + "px";
+	new_grid.style.gridRow= y + " / span " + height;
+	new_grid.style.gridColumn = x + " / span " + width;
 
 	new_grid.onclick = function() {displaySection(section)};
 

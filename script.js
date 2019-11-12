@@ -2,7 +2,7 @@
 var building;
 var room_number;
 var active = false; // recording status
-var grids = [[10, 10, 80, 60], [80, 0, 130, 50], [80, 50, 130, 70], [130, 0, 190, 50], [190, 10, 260, 60]];
+var grids = [[1, 6, 8, 8], [1, 1, 13, 6], [8, 6, 13, 7], [13, 6, 18, 7], [13, 1, 26, 6], [18, 6, 26, 8]];
 var section_count = [];
 
 // Return current date (month/date/year)
@@ -143,13 +143,15 @@ function createGrid(x1, y1, x2, y2, section) {
 	var frame = document.getElementById("classroom_mapping");
 	var height = y2 - y1;
 	var width = x2 - x1;
+	var x = x1 + 2;
+	var y = 10 - (height + y1);
 	var new_grid = document.createElement("DIV");
 
 	new_grid.id = "section_" + section;
 	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
 	new_grid.style.border = "solid";
-	new_grid.style.height = height + "px";
-	new_grid.style.width = width + "px";
+	new_grid.style.gridRow= y + " / span " + height;
+	new_grid.style.gridColumn = x + " / span " + width;
 
 	new_grid.onclick = function() {displaySection(section)};
 
@@ -162,6 +164,11 @@ function displaySection(section) {
 	id = document.getElementById("section_id");
 	students = document.getElementById("section_students");
 	if (input.style.display == "none" || id.innerHTML.substring(9) != section) {
+		var x = event.clientX;
+		var y = event.clientY;
+		input.style.left = x+'px';
+		input.style.top = y+'px';
+		
 		input.style.display = "block";
 		id.innerHTML = "Section: " + section;
 		students.innerHTML = section_count[section-1];

@@ -15,7 +15,7 @@ class rocaObservation extends collabConnection
 		$this->conn=mysqli_connect("dbm2.itc.virginia.edu", "DOTs", "Vb5YDh4m00!hjtNY7*^", "ROCA");
 		if (!$this->conn) {
 			echo "Error: Unable to connect to MySQL." . PHP_EOL;
-			echo "Debugging error: " . mysqli_connect_errno() . PHP_EOL;
+			echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
 			echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
 			exit;
 		}
@@ -88,69 +88,74 @@ class rocaObservation extends collabConnection
 		$this->conn->close();
 	}
 
-	public function get_observation_data()
-	{
-		$this->get_activity_codes();
-		$this->get_event_codes();
-		$this->get_dependencies();
-		$this->get_room_coordinates();
-
-		return $this->listData;
-	}
-	
 	public function get_activity_codes()
 	{
-		$sSQL="SELECT C.category, S.subcategory, A.ID, A.name";
-		$sSQL .=" FROM (categories C INNER JOIN subcategories S ON C.ID=S.cID)";
-		$sSQL .=" INNER JOIN activities_code_bank A ON S.ID=A.scID";
-		$sSQL .=" ORDER BY S.cID, A.ID";
+		$sSQL="SELECT S.scName, A.aName, A.aCode";
+		$sSQL .=" FROM (bank_categories C INNER JOIN bank_sub_categories S ON C.ID=S.catID)";
+		$sSQL .=" INNER JOIN bank_code_activities A ON S.ID=A.scID";
+		$sSQL .=" WHERE C.catName='Activity'";
+		$sSQL .=" ORDER BY S.catID, A.ID";
 		$build_query=$this->conn->query($sSQL);
-		while($row=mysqli_fetch_array($build_query)) $this->listData[$row['category']][$row['subcategory']][$row['ID']]=$row['name'];
-		
-		foreach($this->listData as $a => $b) if ($a=='Activity') foreach($b as $c => $d) $return[$c]=$d;
+		while($row=mysqli_fetch_array($build_query)) $return[$row['scName']][$row['aCode']]=$row['aName'];
+
 		return $return;
 	}
 
-	public function get_event_codes($list='')
+	public function get_zone_codes($aID)
 	{
-		$sSQL="SELECT C.category, S.subcategory, E.ID, E.name";
-		$sSQL .=" FROM (categories C INNER JOIN subcategories S ON C.ID=S.cID)";
-		$sSQL .=" INNER JOIN events_code_bank E ON S.ID=E.scID";
-		if (!empty($list)) $sSQL .=" WHERE E.ID IN (".$list.")";
-		$sSQL .=" ORDER BY S.cID, E.ID";
+		$sSQL="SELECT scID FROM bank_code_activities WHERE aCode='".$aID."' LIMIT 1";
 		$build_query=$this->conn->query($sSQL);
-		while($row=mysqli_fetch_array($build_query)) $this->listData[$row['category']][$row['subcategory']][$row['ID']]=$row['name'];
+		while($row=mysqli_fetch_array($build_query)) $sID=$row['scID'];
+		$scID=($sID==1) ? 8 : 9;
+		
+		$sSQL="SELECT eName, eCode FROM bank_code_events WHERE scID='".$scID."' ORDER BY ID";
+		$build_query=$this->conn->query($sSQL);
+		while($row=mysqli_fetch_array($build_query)) $return[$row['eCode']]=$row['eName'];
 
-		if (!empty($list)) {
-			foreach($this->listData as $a => $b) if (($a!='Activity') && ($a!='Dependencies')) foreach($b as $c => $d) foreach($d as $e => $f) $return[$c][$a][$e]=$f;
-			return $return;	
-		}
+		return $return;
 	}
 
-	public function get_dependencies($aID='')
+	public function get_dependencies($aID)
 	{
-		$sSQL="SELECT aID, eID FROM dependencies";
-		if (!empty($aID)) $sSQL .=" WHERE aID='".$aID."'";
-		$sSQL .=" ORDER BY aID, eID";
+		$sSQL="SELECT D.eID ";
+		$sSQL .=" FROM bank_dependencies D INNER JOIN bank_code_activities A ON A.ID=D.aID";
+		$sSQL .=" WHERE A.aCode='".$aID."' ORDER BY aID, eID";
 		$build_query=$this->conn->query($sSQL);
-		while($row=mysqli_fetch_array($build_query)) $this->listData['Dependencies'][$row['aID']][]=$row['eID'];
+		while($row=mysqli_fetch_array($build_query)) $array[]=$row['eID'];
 
-		if (!empty($aID)) return implode(",", $this->listData['Dependencies'][$aID]);	
+		$list=implode(",", $array);	
+		return $this->get_event_codes($list);
 	}
 
-	public function get_room_coordinates($rn='')
+	public function get_event_codes($list)
 	{
-		$sSQL="SELECT R.roomName, RC.sP, RC.eP, RC.sID FROM room_coordinates RC INNER JOIN room R ON R.ID-RC.rID";
-		if (!empty($rn)) $sSQL .=" WHERE R.roomName='".$rn."'";
-		$sSQL .=" ORDER BY R.roomName, RC.sID";
+		$sSQL="SELECT C.catName, S.scName, E.eName, E.eCode";
+		$sSQL .=" FROM (bank_categories C INNER JOIN bank_sub_categories S ON C.ID=S.catID)";
+		$sSQL .=" INNER JOIN bank_code_events E ON S.ID=E.scID";
+		$sSQL .=" WHERE (C.catName='Instantaneous Event' OR C.catName='Durational Event') AND E.ID IN (".$list.")";
+		$sSQL .=" ORDER BY S.catID, E.ID";
 		$build_query=$this->conn->query($sSQL);
-		while($row=mysqli_fetch_array($build_query)) $this->listData['Coordinates'][$row['roomName']][$row['sID']]=$row['sP'].','.$row['eP'];
+		while($row=mysqli_fetch_array($build_query)) $return[$row['scName']][$row['catName']][$row['eCode']]=$row['eName'];
 
-		if (!empty($rn)) {
-			foreach($this->listData['Coordinates'][$rn] as $a => $b) $return[$a]=$b;
-			return $return;
-		}
+		return $return;
 	}
+
+	public function get_room_coordinates($rn)
+	{
+		$sSQL="SELECT Z.zID, Z.rCord FROM room_zones Z INNER JOIN room R ON R.ID=Z.rID WHERE R.rName='".$rn."' ORDER BY Z.ID";
+		$build_query=$this->conn->query($sSQL);
+		while($row=mysqli_fetch_array($build_query)) $array[$row['zID']]='['.$row['rCord'].']';
+		$return=implode(",", $array);	
+
+		return $return;
+	}
+
+	public function create_collection($console)
+	{
+		$iSQL="INSERT INTO 'collection' ('oID', 'cID', 'sTime', 'eTime', 'temp') VALUES ('1', '3', '0', '0', '".$console."')";
+		mysqli_query($this->conn, $iSQL);
+	}
+
 }
 
 class collabConnection

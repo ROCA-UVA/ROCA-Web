@@ -2,6 +2,8 @@
 var building;
 var room_number;
 var active = false; // recording status
+var section_count = [];
+var activity = "";
 
 // Return current date (month/date/year)
 function getDate() {
@@ -15,10 +17,14 @@ function getDate() {
 function getTime() {
 	var timestamp = new Date();
 	var min = timestamp.getMinutes();
+	var sec = timestamp.getSeconds();
 	if(min < "10") {
 		min = "0" + min;
 	}
-	return timestamp.getHours()+":"+min;
+	if(sec < "10") {
+		sec = "0" + sec;
+	}
+	return timestamp.getHours()+":"+min+":"+sec;
 }
 
 function initConfig() {
@@ -42,6 +48,12 @@ function initConfig() {
 	// Display corresponding classroom image
 	var image_path = "url(assets/images/".concat(building, "-", room_number, ".jpg)");
 	document.getElementById("classroom_mapping").style.backgroundImage = image_path;
+
+	// Display section grids
+	for (var i = 0; i < grids.length; i++) {
+		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i+1);
+		section_count.push(0);
+	}
 }
 
 function reload() {
@@ -68,6 +80,7 @@ function start() {
 	// Print date and time when observation is started
 	console.log("Observation started on "+getDate()+" at "+getTime());
 }
+
 
 // Stop recording
 function stop() {
@@ -107,6 +120,83 @@ function confirmAction(action, cancel, div_id) {
 }
 
 // Print time and action when event button is pressed
-function logData(button_id) {
-	console.log("["+getTime()+"] "+document.getElementById(button_id).title);
+function logData(id) {
+	if (active) {
+		var element = document.getElementById(id);
+		if (element.className == "pulse-side-button") {
+			if (element.style.backgroundColor == "red") {
+				console.log("["+getTime()+"] End of event: "+element.title);
+				element.setAttribute("style", "background-color: black");
+			} else {
+				console.log("["+getTime()+"] Start of event: "+element.title);
+				element.setAttribute("style", "background-color: red");
+				document.getElementById("alert_event").innerHTML = element.innerHTML;
+				document.getElementById("alert_time").innerHTML = getTime();
+			}
+		} else if (element.nodeName == "INPUT") {
+			console.log("["+getTime()+"] Comment: "+element.value);
+			element.value = "";
+		} else if (element.nodeName == "A") {
+			console.log("["+getTime()+"] Activity: "+element.title);
+			document.getElementById("alert_activity").innerHTML = element.innerHTML;
+			document.getElementById("alert_time").innerHTML = getTime();
+			activity = id;
+			document.getElementById("section_input").style.display = "none";
+			$("#event_dependencies").load("collect.php?action=event_update&code="+id);
+		} else {
+			document.getElementById("alert_event").innerHTML = element.innerHTML;
+			document.getElementById("alert_time").innerHTML = getTime();
+			console.log("["+getTime()+"] Event: "+element.title);
+		}
+	}
+}
+
+// Creates grids for classroom sections
+function createGrid(x1, y1, x2, y2, section) {
+	var frame = document.getElementById("classroom_mapping");
+	var height = y2 - y1;
+	var width = x2 - x1;
+	var x = x1 + 2;
+	var y = 10 - (height + y1);
+	var new_grid = document.createElement("DIV");
+
+	new_grid.id = "section_" + section;
+	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
+	new_grid.style.border = "solid";
+	new_grid.style.gridRow= y + " / span " + height;
+	new_grid.style.gridColumn = x + " / span " + width;
+
+	new_grid.onclick = function() {displaySection(section)};
+
+	frame.appendChild(new_grid);
+}
+
+// Display corresponding classroom section
+function displaySection(section) {
+	input = document.getElementById("section_input");
+	id = document.getElementById("section_id");
+	students = document.getElementById("section_students");
+	if (input.style.display == "none" || id.innerHTML.substring(9) != section) {
+		var x = event.clientX;
+		var y = event.clientY;
+		input.style.left = x+'px';
+		input.style.top = y+'px';
+
+		input.style.display = "block";
+		id.innerHTML = "Section: " + section;
+		students.innerHTML = section_count[section-1];
+		$("#section_events").load("collect.php?action=zone_update&code="+activity);
+	} else if (id.innerHTML.substring(9) == section) {
+		input.style.display = "none";
+	}
+}
+
+// Update student count total
+function updateCount(num) {
+	section = document.getElementById("section_id").innerHTML.substring(9);
+	students = document.getElementById("section_students");
+
+	count = section_count[section-1] += num;
+	students.innerHTML = count;
+	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }

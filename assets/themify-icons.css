@@ -23,6 +23,12 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+/* user icon */
+.ti-user:before {
+	content: "\e602";
+}
+
 /* go back icon*/
 .ti-arrow-left:before {
 	content: "\e629";

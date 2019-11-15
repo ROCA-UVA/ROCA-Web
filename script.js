@@ -4,6 +4,7 @@ var room_number;
 var active = false; // recording status
 var section_count = [];
 var activity = "";
+var observationData = [];
 
 // Return current date (month/date/year)
 function getDate() {
@@ -79,6 +80,7 @@ function start() {
 
 	// Print date and time when observation is started
 	console.log("Observation started on "+getDate()+" at "+getTime());
+    observationData = [];
 }
 
 
@@ -89,7 +91,10 @@ function stop() {
 	// Submit observation log to a form
 	var log = document.getElementById("fullData");
 	log.disabled = false;
-	document.getElementById("finalSubmit").submit();
+    document.getElementById("finalSubmit").submit();
+    var data = { observations: observationData }
+    //send to php
+    //$.post(index.php, data)
 }
 
 // Display cancel button and action button
@@ -121,33 +126,43 @@ function confirmAction(action, cancel, div_id) {
 
 // Print time and action when event button is pressed
 function logData(id) {
-	if (active) {
+    if (active) {
 		var element = document.getElementById(id);
 		if (element.className == "pulse-side-button") {
 			if (element.style.backgroundColor == "red") {
-				console.log("["+getTime()+"] End of event: "+element.title);
+                console.log("[" + getTime() + "] End of event: " + element.title);
+                loggedData = "[" + getTime() + "] End of event: " + element.title;
+                observationData.push(loggedData);
 				element.setAttribute("style", "background-color: black");
-			} else {
-				console.log("["+getTime()+"] Start of event: "+element.title);
+            } else {
+                console.log("[" + getTime() + "] Start of event: " + element.title);
+                loggedData = "[" + getTime() + "] Start of event: " + element.title;
+                observationData.push(loggedData);
 				element.setAttribute("style", "background-color: red");
 				document.getElementById("alert_event").innerHTML = element.innerHTML;
 				document.getElementById("alert_time").innerHTML = getTime();
-			}
+            }
 		} else if (element.nodeName == "INPUT") {
-			console.log("["+getTime()+"] Comment: "+element.value);
-			element.value = "";
+            console.log("[" + getTime() + "] Comment: " + element.value);
+            loggedData = "[" + getTime() + "] Comment: " + element.value;
+            observationData.push(loggedData);
+            element.value = "";
 		} else if (element.nodeName == "A") {
-			console.log("["+getTime()+"] Activity: "+element.title);
+            console.log("[" + getTime() + "] Activity: " + element.title);
+            loggedData = "[" + getTime() + "] Activity: " + element.innerHTML;
+            observationData.push(loggedData);
 			document.getElementById("alert_activity").innerHTML = element.innerHTML;
 			document.getElementById("alert_time").innerHTML = getTime();
 			activity = id;
 			document.getElementById("section_input").style.display = "none";
 			$("#event_dependencies").load("collect.php?action=event_update&code="+id);
-		} else {
+        } else {
 			document.getElementById("alert_event").innerHTML = element.innerHTML;
 			document.getElementById("alert_time").innerHTML = getTime();
 			console.log("["+getTime()+"] Event: "+element.title);
-		}
+            loggedData = "[" + getTime() + "] Event: " + element.title;
+            observationData.push(loggedData);
+        }
 	}
 }
 

@@ -92,9 +92,9 @@ function stop() {
 	var log = document.getElementById("fullData");
 	log.disabled = false;
     document.getElementById("finalSubmit").submit();
-    var data = { observations: observationData }
+    var data = { observationData: observationData }
     //send to php
-    //$.post(index.php, data)
+    $("#section_events").load("collect.php?action=collect&fullData=" + data);
 }
 
 // Display cancel button and action button

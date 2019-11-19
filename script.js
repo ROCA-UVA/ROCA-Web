@@ -1,9 +1,8 @@
 // Global Variables
-var building;
-var room_number;
 var active = false; // recording status
 var section_count = [];
 var activity = "";
+var logs ="";
 
 // Return current date (month/date/year)
 function getDate() {
@@ -29,16 +28,16 @@ function getTime() {
 
 function initConfig() {
 	// Get URL parameters and set building/room number variables
-	var url = window.location.search.substring(1);
-	var url_params = url.split('&');
-	for (var i = 0; i < url_params.length; i++) {
-		var param = url_params[i].split('=');
-		if (param[0] == "building") {
-			building = param[1];
-		} else if (param[0] == "room_number") {
-			room_number = param[1];
-		}
-	}
+//	var url = window.location.search.substring(1);
+//	var url_params = url.split('&');
+//	for (var i = 0; i < url_params.length; i++) {
+//		var param = url_params[i].split('=');
+//		if (param[0] == "b") {
+//			building = param[1];
+//		} else if (param[0] == "r") {
+//			room_number = param[1];
+//		}
+//	}
 
 	// Update title of live observation page
 	if (building != undefined && room_number != undefined) {
@@ -79,16 +78,17 @@ function start() {
 
 	// Print date and time when observation is started
 	console.log("Observation started on "+getDate()+" at "+getTime());
+	logs = logs.concat("Observation Started*"+getDate()+"*"+getTime()+"|");
 }
-
 
 // Stop recording
 function stop() {
 	active = false;
 
+	logs = logs.concat("Observation Ended*"+getDate()+"*"+getTime());
 	// Submit observation log to a form
-	var log = document.getElementById("fullData");
-	log.disabled = false;
+	document.getElementById("fullData").value = logs;
+//	document.getElementById("fullData").value = "test";
 	document.getElementById("finalSubmit").submit();
 }
 
@@ -125,19 +125,23 @@ function logData(id) {
 		var element = document.getElementById(id);
 		if (element.className == "pulse-side-button") {
 			if (element.style.backgroundColor == "red") {
-				console.log("["+getTime()+"] End of event: "+element.title);
+				console.log("["+getTime()+"] End of event: "+element.innerHTML);
+				logs = logs.concat("Duration Event End*"+id+"*"+getTime()+"|");
 				element.setAttribute("style", "background-color: black");
 			} else {
-				console.log("["+getTime()+"] Start of event: "+element.title);
+				console.log("["+getTime()+"] Start of event: "+element.innerHTML);
+				logs = logs.concat("Duration Event Start*"+id+"*"+getTime()+"|");
 				element.setAttribute("style", "background-color: red");
 				document.getElementById("alert_event").innerHTML = element.innerHTML;
 				document.getElementById("alert_time").innerHTML = getTime();
 			}
 		} else if (element.nodeName == "INPUT") {
 			console.log("["+getTime()+"] Comment: "+element.value);
+			logs = logs.concat("Comment*"+element.value+"*"+getTime()+"|");
 			element.value = "";
 		} else if (element.nodeName == "A") {
-			console.log("["+getTime()+"] Activity: "+element.title);
+			console.log("["+getTime()+"] Activity: "+element.innerHTML);
+			logs = logs.concat("Activity Start*"+id+"*"+getTime()+"|");
 			document.getElementById("alert_activity").innerHTML = element.innerHTML;
 			document.getElementById("alert_time").innerHTML = getTime();
 			activity = id;
@@ -145,8 +149,12 @@ function logData(id) {
 			$("#event_dependencies").load("collect.php?action=event_update&code="+id);
 		} else {
 			document.getElementById("alert_event").innerHTML = element.innerHTML;
+			element.setAttribute("style", "background-color: grey");
+			setTimeout(function(){element.setAttribute("style", "background-color: black");}, 1000);
 			document.getElementById("alert_time").innerHTML = getTime();
-			console.log("["+getTime()+"] Event: "+element.title);
+			console.log("["+getTime()+"] Event: "+element.innerHTML);
+			section = document.getElementById("section_id").innerHTML.substring(9);
+			logs = logs.concat("Instant Event*"+id+"="+section+"*"+getTime()+"|");
 		}
 	}
 }
@@ -185,7 +193,7 @@ function displaySection(section) {
 		input.style.display = "block";
 		id.innerHTML = "Section: " + section;
 		students.innerHTML = section_count[section-1];
-		$("#section_events").load("collect.php?action=zone_update&code="+activity);
+		if (activity) $("#section_events").load("collect.php?action=zone_update&code="+activity);
 	} else if (id.innerHTML.substring(9) == section) {
 		input.style.display = "none";
 	}
@@ -199,4 +207,5 @@ function updateCount(num) {
 	count = section_count[section-1] += num;
 	students.innerHTML = count;
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
+	logs = logs.concat("Section="+section+"*"+num+"*"+getTime()+"|");
 }

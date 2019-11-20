@@ -74,10 +74,7 @@ function initConfig() {
 	
 		myVar = setInterval(setTime, 500);
 		toggle.addEventListener("click",function() {
-			   video.pause();
-				video2.pause();
-				video3.pause();
-			 
+			
 			 
 		if (currentlyPlaying === 1) {
 			document.getElementById("slides_video").id = 'xxxxxx';
@@ -95,9 +92,7 @@ function initConfig() {
 	
 			
 				
-			video3.play();
-			video.play();
-			video2.play();
+		
 		}
 			
 	
@@ -111,7 +106,7 @@ function initConfig() {
 				video.play();
 				video2.play();
 				video3.play();
-				playIcon.className = "ti-control-play"
+				playIcon.className = "ti-control-stop"
 				// Update the button text to 'Pause'
 				
 			} else {
@@ -119,7 +114,7 @@ function initConfig() {
 				video.pause();
 				video2.pause();
 				video3.pause();
-				playIcon.className = "ti-control-stop"
+				playIcon.className = "ti-control-play"
 				// Update the button text to 'Play'
 				
 			}
@@ -158,7 +153,7 @@ function initConfig() {
 			video.pause();
 			video2.pause();
 			video3.pause();
-			playIcon.className = "ti-control-stop"
+			playIcon.className = "ti-control-play"
 			video.currentTime = time;
 			video2.currentTime=time;
 			video3.currentTime=time;
@@ -226,6 +221,9 @@ function reload() {
 // Start recording
 function start() {
 	active = true;
+
+	//start the video
+	document.getElementById("play-pause").click();
 
 	// Enable event buttons
 	var inputs = document.getElementsByTagName("INPUT");

@@ -50,6 +50,173 @@ function initConfig() {
 		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i+1);
 		section_count.push(0);
 	}
+
+
+		// Video
+		var video = document.getElementById("student_video");
+		var video2 = document.getElementById("slides_video");
+		var video3 = document.getElementById("instructor_video");
+		// Buttons
+		var playButton = document.getElementById("play-pause");
+		var playIcon = document.getElementById("play")
+		var muteButton = document.getElementById("mute");
+		
+		var toggle = document.getElementById("toggle");
+		// Sliders
+		var seekBar = document.getElementById("seek-bar");
+		var volumeBar = document.getElementById("volume-bar");
+	
+	
+	
+		var currentlyPlaying = 1;
+	
+		
+	
+		myVar = setInterval(setTime, 500);
+		toggle.addEventListener("click",function() {
+			   video.pause();
+				video2.pause();
+				video3.pause();
+			 
+			 
+		if (currentlyPlaying === 1) {
+			document.getElementById("slides_video").id = 'xxxxxx';
+			 document.getElementById("instructor_video").id ="slides_video";
+			 document.getElementById("xxxxxx").id = 'instructor_video';
+			currentlyPlaying = 2;
+		 
+		} else {
+			document.getElementById("instructor_video").id = 'xxxxxx';
+			 document.getElementById("slides_video").id ="instructor_video";
+			 document.getElementById("xxxxxx").id = 'slides_video';
+			currentlyPlaying = 1;
+		   
+		}
+	
+			
+				
+			video3.play();
+			video.play();
+			video2.play();
+		}
+			
+	
+	
+			);
+	
+		// Event listener for the play/pause button
+		playButton.addEventListener("click", function() {
+			if (video.paused == true) {
+				// Play the video
+				video.play();
+				video2.play();
+				video3.play();
+				playIcon.className = "ti-control-play"
+				// Update the button text to 'Pause'
+				
+			} else {
+				// Pause the video
+				video.pause();
+				video2.pause();
+				video3.pause();
+				playIcon.className = "ti-control-stop"
+				// Update the button text to 'Play'
+				
+			}
+		});
+	
+	
+		// Event listener for the mute button
+		muteButton.addEventListener("click", function() {
+			if (video.muted == false) {
+				// Mute the video
+				video.muted = true;
+				video2.muted = true;
+				video3.muted= true;
+				// Update the button text
+				muteButton.innerHTML = "Unmute";
+			} else {
+				// Unmute the video
+				video.muted = false;
+				video2.muted=false;
+				video3.muted=false;
+				// Update the button text
+				muteButton.innerHTML = "Mute";
+			}
+		});
+	
+	
+	
+	
+	
+		// Event listener for the seek bar
+		seekBar.addEventListener("change", function() {
+			// Calculate the new time
+			var time = video.duration * (seekBar.value / 100);
+	
+			// Update the video time
+			video.pause();
+			video2.pause();
+			video3.pause();
+			playIcon.className = "ti-control-stop"
+			video.currentTime = time;
+			video2.currentTime=time;
+			video3.currentTime=time;
+		});
+	
+		
+		// Update the seek bar as the video plays
+		video3.addEventListener("timeupdate", function() {
+			// Calculate the slider value
+			var value = (100 / video3.duration) * video3.currentTime;
+	
+			// Update the slider value
+			seekBar.value = value;
+		});
+	
+	
+	
+		// Event listener for the volume bar
+		volumeBar.addEventListener("change", function() {
+			// Update the video volume
+			video.volume = volumeBar.value;
+			video3.volume = volumeBar.value;
+			video2.volume = volumeBar.value;
+		});
+	
+		function setTime(){
+			var time = video3.currentTime;
+	
+			 document.getElementById("time").innerHTML= new Date(time * 1000).toISOString().substr(11, 8);
+	
+		}
+	
+	
+	
+	
+	var offset = [0,0];
+	var divOverlay = document.getElementById ("overlay");
+	var isDown = false;
+	divOverlay.addEventListener('mousedown', function(e) {
+		isDown = true;
+		offset = [
+			divOverlay.offsetLeft - e.clientX,
+			divOverlay.offsetTop - e.clientY
+		];
+	}, true);
+	document.addEventListener('mouseup', function() {
+		isDown = false;
+	}, true);
+	
+	document.addEventListener('mousemove', function(e) {
+		event.preventDefault();
+		if (isDown) {
+			divOverlay.style.left = (e.clientX + offset[0]) + 'px';
+			divOverlay.style.top  = (e.clientY + offset[1]) + 'px';
+		}
+	}, true);
+	
+	
 }
 
 function reload() {
@@ -156,6 +323,7 @@ function createGrid(x1, y1, x2, y2, section) {
 	new_grid.onclick = function() {displaySection(section)};
 
 	frame.appendChild(new_grid);
+	
 }
 
 // Display corresponding classroom section
@@ -186,3 +354,4 @@ function updateCount(num) {
 	students.innerHTML = count;
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }
+

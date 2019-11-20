@@ -7,8 +7,9 @@
 	<title>ROCA Observation Tool</title>
 	<link rel="stylesheet" href="assets/stylesheet.css">
 	<link rel="stylesheet" href="assets/themify-icons.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 </head>
 
 
@@ -27,7 +28,9 @@
 						<div class="classroom_box">
 							<a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow" class="ti-arrow-left"></span></a>
 							<span id = "classroom_name">Classroom Not Found</span>
+							
 						</div>
+						
 					<div class="alert_bar">
 						<div class="col1">
 							<div class="small">
@@ -48,10 +51,15 @@
 				</div>
 			</div>
 			</div>
+			
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
+			
 			<div id="classroom_mapping">
+					
+					
 				<div id="section_input">
+						
 					<table>
 					<tr>
 						<td></td><td></td>
@@ -63,6 +71,7 @@
 						<td><button class="circularButton2" title="Increment Students" type="button" id="more_students" onclick="updateCount(1)" style="font-weight: bold; font-size: 70%;">+</button></td>
 						<td rowspan="3">
 							<button class="pop_up_button" title="Asks Question" id="sq_button"  onclick="logData('sq_button')">Asks Question</button> 
+						
 							<button class="pop_up_button" title="Responds to Instructor" id="sri_button" onclick="logData('sri_button')">Responds to Instructor</button>
 							<button class="pop_up_button" title="Makes a Prediction" id="sp_button"  onclick="logData('sp_button')">Makes a Prediction</button>
 							<button class="pop_up_button" title="Responds to Student" id="srs_button"  onclick="logData('srs_button')">Responds to Student</button>
@@ -76,10 +85,41 @@
 					</tr>
 					</table>
 				</div>
+				<div id="overlay"> 
+						<video id ="instructor_video" >
+		
+					 <source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/882dd1d9-e18e-4b72-93f8-aaff010d690b.mp4?mediaTargetType=videoPodcast" type="video/mp4">
+						 
+				</video>
+				<video id ="slides_video" >
+		
+					 <source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/baa82c04-bb41-4695-bffb-aaff010ba124.mp4?mediaTargetType=videoPodcast" type="video/mp4">
+						 
+				</video>
+		 </div> 		
+				<video id="student_video" >
+						<source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/d41df59a-dd25-4b86-a524-aaff010ec73f.mp4?mediaTargetType=videoPodcast" type="video/mp4">
+				
+
 			</div>
 
 			<div class="bottom-row">
-				<div id="bottom_left">		
+				
+				<div id="bottom_left">	
+						<div id="video-controls">
+							
+								<button type="button" style="float: left" id="play-pause" class="play"><span id="play" class="ti-control-play" style="vertical-align: -2px"></span></button>
+								<b id = "time" style="float:left ; color:white"> 0:00</b>
+								<input type="range" id="seek-bar" value="0">
+								<button id="toggle" style="float: right" type="button"><span class="ti-reload" style="vertical-align: -2px"></span></button>
+								
+								<input type="range"  style="float: right" id="volume-bar" min="0" max="1" step="0.1" value="1">
+								<button type="button" style="float: right" id="mute">Mute</button>
+								
+							
+				
+				</div>
+					
 					<div class="play-reset-btn">
 						<div class="pen-wrapper" style="display: inline-block">
 							<div class="buton-cover button-slide-out" id="active_div">
@@ -96,6 +136,8 @@
 								</div>
 							</div>
 						</div>
+
+						
 
 						<div class="pen-wrapper" style="display: inline-block">
 

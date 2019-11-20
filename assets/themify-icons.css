@@ -49,3 +49,6 @@
 .ti-control-stop:before {
 	content: "\e6ab";
 }
+.ti-hand-drag:before {
+	content: "\e638";
+}

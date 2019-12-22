@@ -154,12 +154,10 @@ body {
 .alert_bar{
 	grid-column-start: 2;
 	grid-column-end:3;
-	width: 100%;
+	width: 40%;
 	height: 34px;
   	background: #22AD1E;
 	border-radius: .25em;
-
-
 	position: relative;
 	display: grid; /* IE10 */
 	flex-wrap: wrap;
@@ -172,7 +170,7 @@ body {
 	/* align-self: center; */
 	grid-column-gap: 0px;
 	grid-row-gap: 30px;
-	margin: -6% 8% 8% 8%;
+	margin: 10% 8% 8% 8%;
 	float: right;
 	width: 92%;
 }
@@ -181,10 +179,7 @@ body {
 	grid-column-end:3;
 	background-color: #3CCE3C;
 }
-.col3{
-	grid-column-start:3;
-	grid-column-end:4;
-}
+
 .small{
 	font-size: 12px;
 	font-weight: lighter;

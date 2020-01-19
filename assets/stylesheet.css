@@ -138,13 +138,10 @@ body {
 	grid-auto-row: 30px;
 	grid-template-columns: 1fr 1fr;
 	grid-row-columns: 1fr;
-	/* align-self: center; */
 	grid-column-gap: 20px;
-	/* grid-row-gap: 30px; */
-	margin-right: 8%;
-	float: right;
+	float: left;
 	height: 30px;
-	width: 92%;
+	width: 100%;
 }
 .classroom_box{
 	grid-column-start: 1;

@@ -146,6 +146,9 @@ function createGrid(x1, y1, x2, y2, section) {
 	var x = x1 + 2;
 	var y = 10 - (height + y1);
 	var new_grid = document.createElement("DIV");
+	var new_tab = document.createElement("button");
+
+	new_tab.id = "tab_" + section;
 
 	new_grid.id = "section_" + section;
 	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";

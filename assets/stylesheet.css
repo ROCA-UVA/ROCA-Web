@@ -512,6 +512,10 @@ input[type="text"] {
 	margin-left: 10px;
 }
 
+#comment{
+	width: 60%;
+}
+ 
 #submitComment {
     margin-left: -60px;
     border-radius: 100px;

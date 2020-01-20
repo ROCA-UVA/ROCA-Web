@@ -146,9 +146,6 @@ function createGrid(x1, y1, x2, y2, section) {
 	var x = x1 + 2;
 	var y = 10 - (height + y1);
 	var new_grid = document.createElement("DIV");
-	var new_tab = document.createElement("button");
-
-	new_tab.id = "tab_" + section;
 
 	new_grid.id = "section_" + section;
 	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
@@ -156,9 +153,18 @@ function createGrid(x1, y1, x2, y2, section) {
 	new_grid.style.gridRow= y + " / span " + height;
 	new_grid.style.gridColumn = x + " / span " + width;
 
-	new_grid.onclick = function() {displaySection(section)};
+	var myButton = document.createElement("input");
+	myButton.type = "button";
+	myButton.style.backgroundColor = "white";
+	myButton.value = "Section " + section;
+	myButton.style.gridRow= y + " / span " + height;
+	myButton.style.gridColumn = x + " / span " + width;
+
+	myButton.onclick = function() {displaySection(section)};
 
 	frame.appendChild(new_grid);
+	frame.appendChild(myButton);
+
 }
 
 // Display corresponding classroom section

@@ -49,7 +49,7 @@ function initConfig() {
 	for (var i = 0; i < grids.length; i++) {
 		createGrid(grids[i][0], grids[i][1], grids[i][2], grids[i][3], i+1);
 		section_count.push(0);
-	}
+	}	
 }
 
 function reload() {
@@ -150,12 +150,20 @@ function createGrid(x1, y1, x2, y2, section) {
 	new_grid.id = "section_" + section;
 	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
 	new_grid.style.border = "solid";
-	new_grid.style.gridRow= y + " / span " + height;
+	new_grid.style.gridRow = y + " / span " + height;
 	new_grid.style.gridColumn = x + " / span " + width;
 
-	new_grid.onclick = function() {displaySection(section)};
+	var tab_button = document.createElement("input");
+	tab_button.type = "button";
+	tab_button.style.backgroundColor = "white";
+	tab_button.value = "Section " + section;
+	tab_button.style.gridRow = y + " / span " + height;
+	tab_button.style.gridColumn = x + " / span " + width;
+
+	tab_button.onclick = function() {displaySection(section)};
 
 	frame.appendChild(new_grid);
+	frame.appendChild(tab_button);	
 }
 
 // Display corresponding classroom section
@@ -182,7 +190,10 @@ function updateCount(num) {
 	section = document.getElementById("section_id").innerHTML.substring(9);
 	students = document.getElementById("section_students");
 	
-	count = section_count[section-1] += num;	
+	if (num == -1 && count < 1)
+		count += 0;
+	else 
+		count = section_count[section-1] += num;	
 	students.innerHTML = count;
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }

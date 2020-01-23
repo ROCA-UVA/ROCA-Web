@@ -156,9 +156,25 @@ function createGrid(x1, y1, x2, y2, section) {
 	var tab_button = document.createElement("input");
 	tab_button.type = "button";
 	tab_button.style.backgroundColor = "white";
+	tab_button.style.opacity = .5;
 	tab_button.value = "Section " + section;
 	tab_button.style.gridRow = y + " / span " + height;
 	tab_button.style.gridColumn = x + " / span " + width;
+
+
+	// tab_button.onmouseover = function() {displaySection(section)};
+
+	// var mouseDown = 0;
+	// document.body.onmousedown = function() { 
+	// 	++mouseDown;
+	// }
+	// document.body.onmouseup = function() {
+	// 	--mouseDown;
+	// }
+	
+	// if (mouseDown) {
+	// 	tab_button.onclick = function() {displaySection(section)	
+	// }
 
 	tab_button.onclick = function() {displaySection(section)};
 

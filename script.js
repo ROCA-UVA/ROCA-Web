@@ -163,7 +163,7 @@ function createGrid(x1, y1, x2, y2, section) {
 	tab_button.onclick = function() {displaySection(section)};
 
 	frame.appendChild(new_grid);
-	frame.appendChild(tab_button);	
+	new_grid.appendChild(tab_button);	
 }
 
 // Display corresponding classroom section

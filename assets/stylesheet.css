@@ -104,15 +104,10 @@ body {
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
 }
 
-#section_input {
-	position: absolute;
-	z-index: 2;
+.section_menu {
 	display: none;
-	width: 180px;
-	height: 180px;
 	background-color: white;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-	border-radius: 10%;
+	position: relative;
 }
 
 #left_side {
@@ -560,12 +555,4 @@ element.style {
 th, td {
 	text-align: center;
 	padding: 0;
-}
-
-
-table{
-	width:100%; 
-	height:100%; 
-	background-color: white;
-	border-radius: 10%;
 }

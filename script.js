@@ -4,6 +4,7 @@ var room_number;
 var active = false; // recording status
 var grids = [[1, 6, 8, 8], [1, 1, 13, 6], [8, 6, 13, 7], [13, 6, 18, 7], [13, 1, 26, 6], [18, 6, 26, 8]];
 var section_count = [];
+var z = 10;
 
 // Return current date (month/date/year)
 function getDate() {
@@ -138,60 +139,82 @@ function logData(id) {
 	}
 }
 
-// Creates grids for classroom sections
+// Create section menus
+function createSection(section) {
+	var html = "";
+	html += "<table>";
+	html += "	<tr>";
+	html += "		<td rowspan=\"3\"><span class='ti-user' style='vertical-align: -2px; font-size: 70%;'></span></td>";
+	html += "		<td><button class=\"circularButton2 more_students\" title=\"Increment Students\" type=\"button\" onclick=\"updateCount(1," + section + ")\" style=\"font-weight: bold; font-size: 70%;\">+</button></td>";
+	html += "		<td rowspan=\"3\">";
+	html += "			<button class=\"pop_up_button sq_button\" title=\"Asks Question\" onclick=\"logData('sq_button')\">Asks Question</button> ";
+	html += "			<button class=\"pop_up_button sri_button\" title=\"Responds to Instructor\" onclick=\"logData('sri_button')\">Responds to Instructor</button>";
+	html += "			<button class=\"pop_up_button sp_button\" title=\"Makes a Prediction\"  onclick=\"logData('sp_button')\">Makes a Prediction</button>";
+	html += "			<button class=\"pop_up_button srs_button\" title=\"Responds to Student\" onclick=\"logData('srs_button')\">Responds to Student</button>";
+	html += "		</td>";
+	html += "	</tr>";
+	html += "	<tr>";
+	html += "		<td class=\"section_students\" style=\"font-size: 90%;\">0</td>";
+	html += "	</tr>";
+	html += "	<tr>";
+	html += "		<td><button class=\"circularButton2 less_students\" title=\"Decrement Students\" type=\"button\" onclick=\"updateCount(-1," + section + ")\" style=\"font-weight: bold; font-size: 70%;\">-</button></td>";
+	html += "	</tr>";
+	html += "</table>";
+	return html;
+} 
+
+// Create grids for classroom sections
 function createGrid(x1, y1, x2, y2, section) {
 	var frame = document.getElementById("classroom_mapping");
 	var height = y2 - y1;
 	var width = x2 - x1;
 	var x = x1 + 2;
 	var y = 10 - (height + y1);
-	var new_grid = document.createElement("DIV");
 
-	new_grid.id = "section_" + section;
-	new_grid.style.backgroundColor = "rgba(98,86, 80, 0.5)";
-	new_grid.style.border = "solid";
-	new_grid.style.gridRow= y + " / span " + height;
-	new_grid.style.gridColumn = x + " / span " + width;
+	var new_section = document.createElement("DIV");
+	new_section.id = "section_" + section;
+	new_section.style.gridRow = y + " / span " + height;
+	new_section.style.gridColumn = x + " / span " + width;
+	new_section.style.border = "solid";
+	new_section.style.borderColor = "red";
 
-	var myButton = document.createElement("input");
-	myButton.type = "button";
-	myButton.style.backgroundColor = "white";
-	myButton.value = "Section " + section;
-	myButton.style.gridRow= y + " / span " + height;
-	myButton.style.gridColumn = x + " / span " + width;
+	section_button = document.createElement("input");
+	section_button.type = "button";
+	section_button.value = "Section " + section;
+	section_button.style.width = "100%";
 
-	myButton.onclick = function() {displaySection(section)};
+	// var section_menu = document.getElementById("section_menu").cloneNode(true);
+	var section_menu = document.createElement("DIV");
+	section_menu.id = "section_menu_" + section;
+	section_menu.classList.add("section_menu");
+	section_menu.innerHTML = createSection(section);
 
-	frame.appendChild(new_grid);
-	frame.appendChild(myButton);
+	section_button.onclick = function() {clickDropdown(section)};
 
+	new_section.appendChild(section_button);
+	new_section.appendChild(section_menu);
+	frame.appendChild(new_section);
 }
 
-// Display corresponding classroom section
-function displaySection(section) {
-	input = document.getElementById("section_input");
-	id = document.getElementById("section_id");
-	students = document.getElementById("section_students");
-	if (input.style.display == "none" || id.innerHTML.substring(9) != section) {
-		var x = event.clientX;
-		var y = event.clientY;
-		input.style.left = x+'px';
-		input.style.top = y+'px';
-		
-		input.style.display = "block";
-		id.innerHTML = "Section: " + section;
-		students.innerHTML = section_count[section-1];
-	} else if (id.innerHTML.substring(9) == section) {
-		input.style.display = "none";
+// Display section dropdown menu on click
+function clickDropdown(section) {
+	menu = document.getElementById("section_menu_" + section);
+	if (menu.style.display == "block") {
+		menu.style.display = "none";
+		menu.style.zIndex = -1;
+	} else {
+		menu.style.display = "block";
+		menu.style.zIndex = ++z;
 	}
 }
 
 // Update student count total
-function updateCount(num) {
-	section = document.getElementById("section_id").innerHTML.substring(9);
-	students = document.getElementById("section_students");
-	
-	count = section_count[section-1] += num;	
-	students.innerHTML = count;
+function updateCount(num, section) {
+	students = document.getElementById("section_menu_" + section).getElementsByClassName("section_students")[0];
+	count = section_count[section-1];
+	if (!(num < 0 && count <= 0)) {
+		count = section_count[section-1] += num;
+		students.innerHTML = count;
+	}
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
 }

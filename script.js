@@ -180,8 +180,8 @@ function createGrid(x1, y1, x2, y2, section) {
 
 	section_button = document.createElement("input");
 	section_button.type = "button";
-	section_button.value = "Section " + section;
-	section_button.style.width = "100%";
+	section_button.value = "S" + section;
+	section_button.style = "width:40px; 	border-radius: 100px;	background-color: #ffffff;";
 
 	// var section_menu = document.getElementById("section_menu").cloneNode(true);
 	var section_menu = document.createElement("DIV");

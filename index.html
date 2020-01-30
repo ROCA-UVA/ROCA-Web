@@ -24,67 +24,54 @@
 			<!-- Contains back button and room name -->
 			<div id="top_left">
 				<div class="grid">
-						<div class="classroom_box">
-							<a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow" class="ti-arrow-left"></span></a>
-							<span id = "classroom_name">Classroom Not Found</span>
-						</div>
+					<div class="classroom_box">
+						<a onclick="reload()" style=" vertical-align: middle"><span id="back_arrow" class="ti-arrow-left"></span></a>
+						<span id = "classroom_name">Classroom Not Found</span>
+					</div>
 					<div class="alert_bar">
 						<div class="col1">
-							<div class="small">
-								Student Activities
-							</div>
+							<div class="small"> Student Activities </div>
 						</div>
 						<div class="col2">
-							<div class="small">
-								Student Presentation
-							</div>
+							<div class="small"> Student Presentation </div>
 						</div>
 						<!-- <div class="col3">
 							<div class="small">
 								1:13
 							</div>
 						</div> -->
+					</div>
 				</div>
 			</div>
-			</div>
+			<!-- END: top_left div -->
+
 			<!-- BEGIN: classroom mapping -->
 			<!-- This class needs to change based on which it is, probably most easy with JS, so correct picture is used. -->
 			<div id="classroom_mapping">
 				<div id="overlay"> 
-					<video id ="instructor_video" >
-	
-				 <source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/882dd1d9-e18e-4b72-93f8-aaff010d690b.mp4?mediaTargetType=videoPodcast" type="video/mp4">
-					 
-			</video>
-			<video id ="slides_video" >
-	
-				 <source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/baa82c04-bb41-4695-bffb-aaff010ba124.mp4?mediaTargetType=videoPodcast" type="video/mp4">
-					 
-			</video>
-	 </div>         
-			<video id="student_video" >
+					<video id ="instructor_video">
+						<source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/882dd1d9-e18e-4b72-93f8-aaff010d690b.mp4?mediaTargetType=videoPodcast" type="video/mp4">					 
+					</video>
+					<video id ="slides_video" >
+						<source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/baa82c04-bb41-4695-bffb-aaff010ba124.mp4?mediaTargetType=videoPodcast" type="video/mp4"> 
+					</video>
+				</div>         
+				<video id="student_video">
 					<source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/d41df59a-dd25-4b86-a524-aaff010ec73f.mp4?mediaTargetType=videoPodcast" type="video/mp4">
-
-
+				</video>
 			</div>
 
 			<div class="bottom-row">
 				<div id="bottom_left">	
-					<div id="video-controls">
-                            
+					<div id="video-controls">		
 						<button type="button" style="float: left" id="play-pause" class="play"><span id="play" class="ti-control-play" style="vertical-align: -2px"></span></button>
 						<b id = "time" style="float:left ; color:white"> 0:00</b>
 						<input type="range" id="seek-bar" value="0">
 						<button id="toggle" style="float: right" type="button"><span class="ti-reload" style="vertical-align: -2px"></span></button>
 						
 						<input type="range"  style="float: right" id="volume-bar" min="0" max="1" step="0.1" value="1">
-						<button type="button" style="float: right" id="mute">Mute</button>
-						
-					
-		
-		</div>
-
-
+						<button type="button" style="float: right" id="mute">Mute</button>	
+					</div>
 
 					<div class="play-reset-btn">
 						<div class="pen-wrapper" style="display: inline-block">
@@ -104,7 +91,6 @@
 						</div>
 
 						<div class="pen-wrapper" style="display: inline-block">
-
 							<div class="buton-cover button-slide-out" id="reset_div">
 								<span class="button-slide-out__above" style="text-align: center">are you sure?</span>
 
@@ -117,12 +103,10 @@
 								<div class="button-slide-out__below">
 									<button class="btn" id="cancelReset" onclick="reload()">cancel</button>
 								</div>
-
 							</div>
 						</div>
 					</div>
 
-					<!-- BEGIN: comment box div -->	
 					<div class="comment_box">
 						<input type="text" id="comment" placeholder="Enter Comment" autocomplete="off">
 						<button id="submitComment" onclick="logData('comment')">
@@ -130,7 +114,9 @@
 						</button>
 					</div>
 				</div>
+				<!-- END: bottom_left div -->
 			</div>
+			<!-- END: bottom_row div -->
 		</div>
 		<!-- END: left_side div -->
 
@@ -164,10 +150,10 @@
 				<div id="Instructor Engagement">
 					<div class="subheader">Instructor</div>
 					<div class="checkbox-grid">
-						  	<button class="circular-side-button" title="Poses Question" type="button" id="pq_button" onclick="logData('pq_button')"> Poses Question </button>
-						  	<button class="circular-side-button" title="Rhetoric Question" type="button" id="rq_button" onclick="logData('rq_button')"> Rhetorical Question </button>
-						  	<button class="circular-side-button" title="Comprehension Question" type="button" id="cq_button" onclick="logData('cq_button')"> Comprehensive Question </button>
-						  	<button class="circular-side-button" title="Answers Question" type="button" id="aq_button" onclick="logData('aq_button')"> Answers Question </button>
+						<button class="circular-side-button" title="Poses Question" type="button" id="pq_button" onclick="logData('pq_button')"> Poses Question </button>
+						<button class="circular-side-button" title="Rhetoric Question" type="button" id="rq_button" onclick="logData('rq_button')"> Rhetorical Question </button>
+						<button class="circular-side-button" title="Comprehension Question" type="button" id="cq_button" onclick="logData('cq_button')"> Comprehensive Question </button>
+						<button class="circular-side-button" title="Answers Question" type="button" id="aq_button" onclick="logData('aq_button')"> Answers Question </button>
 
 					</div>
 				</div>
@@ -195,6 +181,7 @@
 		</div>
 		<!-- END: right_side div -->
 	</div>
+	<!-- END: body_content div -->
 
 	<form id="finalSubmit" style="display:none" action="db.php" method="post">
 		<input type="hidden" name="fullData" id="fullData" value="">

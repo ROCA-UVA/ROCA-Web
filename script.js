@@ -56,48 +56,35 @@ function initConfig() {
 	var video = document.getElementById("student_video");
 	var video2 = document.getElementById("slides_video");
 	var video3 = document.getElementById("instructor_video");
+	
 	// Buttons
 	var playButton = document.getElementById("play-pause");
 	var playIcon = document.getElementById("play")
 	var muteButton = document.getElementById("mute");
-	
 	var toggle = document.getElementById("toggle");
+	
 	// Sliders
 	var seekBar = document.getElementById("seek-bar");
 	var volumeBar = document.getElementById("volume-bar");
-
-
-
-	var currentlyPlaying = 1;
-
-	
+	var currentlyPlaying = 1;	
 
 	myVar = setInterval(setTime, 500);
-	toggle.addEventListener("click",function() {
-		
+	toggle.addEventListener("click",function() {		
 		 
-	if (currentlyPlaying === 1) {
-		document.getElementById("slides_video").id = 'xxxxxx';
-		 document.getElementById("instructor_video").id ="slides_video";
-		 document.getElementById("xxxxxx").id = 'instructor_video';
-		currentlyPlaying = 2;
-	 
-	} else {
-		document.getElementById("instructor_video").id = 'xxxxxx';
-		 document.getElementById("slides_video").id ="instructor_video";
-		 document.getElementById("xxxxxx").id = 'slides_video';
-		currentlyPlaying = 1;
-	   
-	}
-
+		if (currentlyPlaying === 1) {
+			document.getElementById("slides_video").id = 'xxxxxx';
+			document.getElementById("instructor_video").id ="slides_video";
+			document.getElementById("xxxxxx").id = 'instructor_video';
+			currentlyPlaying = 2;
 		
-			
+		} else {
+			document.getElementById("instructor_video").id = 'xxxxxx';
+			document.getElementById("slides_video").id ="instructor_video";
+			document.getElementById("xxxxxx").id = 'slides_video';
+			currentlyPlaying = 1;	   
+		}				
 	
-	}
-		
-
-
-		);
+	});
 
 	// Event listener for the play/pause button
 	playButton.addEventListener("click", function() {
@@ -116,10 +103,8 @@ function initConfig() {
 			video3.pause();
 			playIcon.className = "ti-control-play"
 			// Update the button text to 'Play'
-			
 		}
 	});
-
 
 	// Event listener for the mute button
 	muteButton.addEventListener("click", function() {
@@ -140,10 +125,6 @@ function initConfig() {
 		}
 	});
 
-
-
-
-
 	// Event listener for the seek bar
 	seekBar.addEventListener("change", function() {
 		// Calculate the new time
@@ -153,7 +134,7 @@ function initConfig() {
 		video.pause();
 		video2.pause();
 		video3.pause();
-		playIcon.className = "ti-control-play"
+		playIcon.className = "ti-control-play";
 		video.currentTime = time;
 		video2.currentTime=time;
 		video3.currentTime=time;
@@ -169,8 +150,6 @@ function initConfig() {
 		seekBar.value = value;
 	});
 
-
-
 	// Event listener for the volume bar
 	volumeBar.addEventListener("change", function() {
 		// Update the video volume
@@ -181,44 +160,33 @@ function initConfig() {
 
 	function setTime(){
 		var time = video3.currentTime;
-
-		 document.getElementById("time").innerHTML= new Date(time * 1000).toISOString().substr(11, 8);
-
+		document.getElementById("time").innerHTML= new Date(time * 1000).toISOString().substr(11, 8);
 	}
 
 
+	var offset = [0,0];
+	var divOverlay = document.getElementById ("overlay");
+	var isDown = false;
+	divOverlay.addEventListener('mousedown', function(e) {
+		isDown = true;
+		offset = [
+			divOverlay.offsetLeft - e.clientX,
+			divOverlay.offsetTop - e.clientY
+		];
+	}, true);
 
+	document.addEventListener('mouseup', function() {
+		isDown = false;
+	}, true);
 
-var offset = [0,0];
-var divOverlay = document.getElementById ("overlay");
-var isDown = false;
-divOverlay.addEventListener('mousedown', function(e) {
-	isDown = true;
-	offset = [
-		divOverlay.offsetLeft - e.clientX,
-		divOverlay.offsetTop - e.clientY
-	];
-}, true);
-document.addEventListener('mouseup', function() {
-	isDown = false;
-}, true);
-
-document.addEventListener('mousemove', function(e) {
-	event.preventDefault();
-	if (isDown) {
-		divOverlay.style.left = (e.clientX + offset[0]) + 'px';
-		divOverlay.style.top  = (e.clientY + offset[1]) + 'px';
-	}
-}, true);
-
-
+	document.addEventListener('mousemove', function(e) {
+		event.preventDefault();
+		if (isDown) {
+			divOverlay.style.left = (e.clientX + offset[0]) + 'px';
+			divOverlay.style.top  = (e.clientY + offset[1]) + 'px';
+		}
+	}, true);
 }
-
-
-
-
-
-
 
 
 function reload() {

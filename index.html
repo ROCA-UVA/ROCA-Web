@@ -60,20 +60,36 @@
 					<source src="https://uva.hosted.panopto.com/Panopto/Podcast/Social/d41df59a-dd25-4b86-a524-aaff010ec73f.mp4?mediaTargetType=videoPodcast" type="video/mp4">
 				</video>
 			</div>
+			
+			<!-- <div class="bottom-up">
+				<div id="video-controls">		
+					<button type="button" style="float: left" id="play-pause" class="white-circular-button"><span id="play" class="ti-control-play" style="vertical-align: -1px"></span></button>
+					<b id = "time" style="float:left ; color:white; padding: 5px"> 00:00:00</b>
+					<input type="range" id="seek-bar" value="0">
+					<button id="toggle" style="float: right" type="button" class="white-circular-button"><span class="ti-reload" style="vertical-align: -2px"></span></button>
 
-			<div class="bottom-row">
-				<div id="bottom_left">	
+					<input type="range"  style="float: right" id="volume-bar" min="0" max="1" step="0.1" value="1">
+					<button type="button" class = "white-circular-button" style="float: right" id="mute">Mute</button>		
+				</div>
+			</div> -->
+			
+			<div class="bottom-row" style="display: inline">
+				<div class="bottom-up">
 					<div id="video-controls">		
-						<button type="button" style="float: left" id="play-pause" class="play"><span id="play" class="ti-control-play" style="vertical-align: -2px"></span></button>
-						<b id = "time" style="float:left ; color:white"> 0:00</b>
+						<button type="button" style="float: left" id="play-pause" class="white-circular-button"><span id="play" class="ti-control-play" style="vertical-align: -1px"></span></button>
+						<b id = "time" style="float:left ; color:white; padding: 5px"> 00:00:00</b>
 						<input type="range" id="seek-bar" value="0">
-						<button id="toggle" style="float: right" type="button"><span class="ti-reload" style="vertical-align: -2px"></span></button>
-						
-						<input type="range"  style="float: right" id="volume-bar" min="0" max="1" step="0.1" value="1">
-						<button type="button" style="float: right" id="mute">Mute</button>	
-					</div>
+						<button id="toggle" style="float: right" type="button" class="white-circular-button"><span class="ti-reload" style="vertical-align: -2px"></span></button>
 
-					<div class="play-reset-btn">
+						<input type="range"  style="float: right" id="volume-bar" min="0" max="1" step="0.1" value="1">
+						<button type="button" class = "white-circular-button" style="float: right" id="mute">Mute</button>	
+						
+					</div>
+				</div>
+				
+				<div id="bottom_left">	
+					
+					<div class="play-reset-btn" style="float: left">
 						<div class="pen-wrapper" style="display: inline-block">
 							<div class="buton-cover button-slide-out" id="active_div">
 								<span class="button-slide-out__above" style="text-align: center" id="areYouSure">are you sure?</span>

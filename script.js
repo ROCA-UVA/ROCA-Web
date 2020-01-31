@@ -75,6 +75,7 @@ function start() {
 
 	// Print date and time when observation is started
 	console.log("Observation started on "+getDate()+" at "+getTime());
+	document.getElementById("alert_event").innerHTML = "Observation started on "+getDate()+" at "+getTime();
 }
 
 
@@ -119,21 +120,29 @@ function confirmAction(action, cancel, div_id) {
 function logData(id) {
 	if (active) {
 		var element = document.getElementById(id);
+		var alert_activity = document.getElementById("alert_activity");
+		var alert_event = document.getElementById("alert_event");
 		if (element.className == "pulse-side-button") {
 			if (element.style.backgroundColor == "red") {
 				console.log("["+getTime()+"] End of event: "+element.title);
+				alert_event.innerHTML = "["+getTime()+"] End of event: "+element.title;
 				element.setAttribute("style", "background-color: black");
 			} else {
 				console.log("["+getTime()+"] Start of event: "+element.title);
+				alert_event.innerHTML = "["+getTime()+"] Start of event: "+element.title;
 				element.setAttribute("style", "background-color: red");
 			}
 		} else if (element.nodeName == "INPUT") {
 			console.log("["+getTime()+"] Comment: "+element.value);
+			alert_event.innerHTML = "["+getTime()+"] Comment: "+element.value;
 			element.value = "";
 		} else if (element.nodeName == "A") {
 			console.log("["+getTime()+"] Activity: "+element.innerHTML);
+			alert_activity.innerHTML = element.innerHTML;
+			alert_event.innerHTML = "["+getTime()+"] Activity: "+element.innerHTML;
 		} else {
 			console.log("["+getTime()+"] Event: "+element.title);
+			alert_event.innerHTML = "["+getTime()+"] Event: "+element.title;
 		}
 	}
 }
@@ -185,4 +194,5 @@ function updateCount(num) {
 	count = section_count[section-1] += num;	
 	students.innerHTML = count;
 	console.log("["+getTime()+"] Event: "+count+" student(s) in section "+section);
+	document.getElementById("alert_event").innerHTML = "["+getTime()+"] Event: "+count+" student(s) in section "+section;
 }

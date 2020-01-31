@@ -13,14 +13,18 @@ function getDate() {
 	return month+"/"+timestamp.getDate()+"/"+timestamp.getFullYear();
 }
 
-// Return current time (hrs:min)
+// Return current time (hrs:min:sec)
 function getTime() {
 	var timestamp = new Date();
 	var min = timestamp.getMinutes();
+	var sec = timestamp.getSeconds();
 	if(min < "10") {
 		min = "0" + min;
 	}
-	return timestamp.getHours()+":"+min;
+	if(sec < "10") {
+		sec = "0" + sec;
+	}
+	return timestamp.getHours()+":"+min+":"+sec;
 }
 
 function initConfig() {

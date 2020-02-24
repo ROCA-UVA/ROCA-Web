@@ -5,7 +5,7 @@ var active = false; // recording status
 var grids = [[1, 6, 8, 8], [1, 1, 13, 6], [8, 6, 13, 7], [13, 6, 18, 7], [13, 1, 26, 6], [18, 6, 26, 8]];
 var section_count = [];
 var z = 10;
-
+var time;
 // Return current date (month/date/year)
 function getDate() {
 	var timestamp = new Date();
@@ -16,12 +16,14 @@ function getDate() {
 
 // Return current time (hrs:min)
 function getTime() {
-	var timestamp = new Date();
-	var min = timestamp.getMinutes();
-	if(min < "10") {
-		min = "0" + min;
-	}
-	return timestamp.getHours()+":"+min;
+	// var timestamp = new Date();
+	// var min = timestamp.getMinutes();
+	// if(min < "10") {
+	// 	min = "0" + min;
+	// }
+	// return timestamp.getHours()+":"+min;
+	return new Date(time * 1000).toISOString().substr(11, 8);
+
 }
 
 function initConfig() {
@@ -128,24 +130,52 @@ function initConfig() {
 	// Event listener for the seek bar
 	seekBar.addEventListener("change", function() {
 		// Calculate the new time
-		var time = video.duration * (seekBar.value / 100);
+		var curr_time = video.duration * (seekBar.value / 100);
 
 		// Update the video time
 		video.pause();
 		video2.pause();
 		video3.pause();
 		playIcon.className = "ti-control-play";
-		video.currentTime = time;
-		video2.currentTime=time;
-		video3.currentTime=time;
+		video.currentTime = curr_time;
+		video2.currentTime=curr_time;
+		video3.currentTime=curr_time;
+		time = curr_time;
+
+		video.oncanplay = function(){
+			startplay(1);
+		};
+		video2.oncanplay = function(){
+			startplay(1);
+		};
+		video3.oncanplay = function(){
+			startplay(1);
+		};
 	});
+
+	var loaded = 0;
+
+function startplay(num) {
+  // alert(num);
+  loaded += 1;
+
+  if (loaded == 3) {
+
+    document.getElementById("student_video").play();
+    document.getElementById("slides_video").play();
+	document.getElementById("instructor_video").play();
+	loaded = 0
+	var playIcon = document.getElementById("play")
+	playIcon.className = "ti-control-stop"
+  }
+}
 
 	
 	// Update the seek bar as the video plays
 	video3.addEventListener("timeupdate", function() {
 		// Calculate the slider value
 		var value = (100 / video3.duration) * video3.currentTime;
-
+		time = video3.currentTime;
 		// Update the slider value
 		seekBar.value = value;
 	});
@@ -159,8 +189,9 @@ function initConfig() {
 	});
 
 	function setTime(){
-		var time = video3.currentTime;
-		document.getElementById("time").innerHTML= new Date(time * 1000).toISOString().substr(11, 8);
+		var curr_time = video3.currentTime;
+		time = curr_time;
+		document.getElementById("time").innerHTML= new Date(curr_time * 1000).toISOString().substr(11, 8);
 	}
 
 
@@ -210,8 +241,16 @@ function start() {
 	start_button.setAttribute("onclick", "confirmAction('start_button', 'cancelStop', 'active_div')");
 	start_button.title = "Stop";
 
+	var playButton = document.getElementById("play-pause");
+	playButton.click();
 	// Print date and time when observation is started
-	console.log("Observation started on "+getDate()+" at "+getTime());
+	console.log("Observation started at "+getTime());
+	document.getElementById("alert_event").innerHTML = "Observation started at "+getTime();
+	
+	
+ 
+
+
 }
 
 
@@ -256,21 +295,29 @@ function confirmAction(action, cancel, div_id) {
 function logData(id) {
 	if (active) {
 		var element = document.getElementById(id);
+		var alert_activity = document.getElementById("alert_activity");
+		var alert_event = document.getElementById("alert_event");
 		if (element.className == "pulse-side-button") {
 			if (element.style.backgroundColor == "red") {
 				console.log("["+getTime()+"] End of event: "+element.title);
+				alert_event.innerHTML = "["+getTime()+"] End of event: "+element.title;
 				element.setAttribute("style", "background-color: black");
 			} else {
 				console.log("["+getTime()+"] Start of event: "+element.title);
+				alert_event.innerHTML = "["+getTime()+"] Start of event: "+element.title;
 				element.setAttribute("style", "background-color: red");
 			}
 		} else if (element.nodeName == "INPUT") {
 			console.log("["+getTime()+"] Comment: "+element.value);
+			alert_event.innerHTML = "["+getTime()+"] Comment: "+element.value;
 			element.value = "";
 		} else if (element.nodeName == "A") {
 			console.log("["+getTime()+"] Activity: "+element.innerHTML);
+			alert_activity.innerHTML = element.innerHTML;
+			alert_event.innerHTML = "["+getTime()+"] Activity: "+element.innerHTML;
 		} else {
 			console.log("["+getTime()+"] Event: "+element.title);
+			alert_event.innerHTML = "["+getTime()+"] Event: "+element.title;
 		}
 	}
 }
